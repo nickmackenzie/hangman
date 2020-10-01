@@ -11,4 +11,4 @@ of the river (number of guesses)
 6. If you run out of guess, the man will go over the waterfall and you will lose
 7. If you guess right, he will get out and be safe. 
 
-8.
+8. Features: Win counter, Reset button, word categories.
