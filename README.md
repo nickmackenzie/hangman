@@ -10,3 +10,5 @@ of the river (number of guesses)
 5. If the guess is wrong, the man in will get closer to the waterfall
 6. If you run out of guess, the man will go over the waterfall and you will lose
 7. If you guess right, he will get out and be safe. 
+
+8.
