@@ -4,18 +4,22 @@ let blank = " _"
 let wordChoosen = ""
 let tileLength = 0;
 let wordArray = []
-let arrayWords = ['potatoes', 'carrots', 'onions', 'turnips']
+let arrayWords = ['potatoes', 'carrots', 'onions', 'turrrrnips']
 let playBtn = document.getElementById("playBtn")
 let playerInput = document.getElementById("player-guess")
 let guessBtn = document.getElementById("guess-btn")
 let playerMover = 0;
 let playerGuess = []
+let playerLife = wordArray.length
+let playerArray = []
+let correctAnswerArray = []
+
+
 
 
 
 function playerMoverFun() {
     return playerMover = playerMover += 25;
-
 }
 
 
@@ -24,34 +28,41 @@ playBtn.addEventListener('click', playButton)
 guessBtn.addEventListener("click", inputCheck)
 
 
+
 function playButton() {
     wordChooser()
     wordSpliter()
     tileMaker()
 }
-function getAllIndexes(arr, val) {
-    var indexes = [], i;
-    for (i = 0; i < arr.length; i++)
-        if (arr[i] === val)
-            indexes.push(i);
-    return indexes;
+
+
+function winChecker() {
+    var wordString = wordArray.toString()
+    var playerString = playerArray.toString()
+
+    if (wordString === playerString) {
+        alert("you win")
+    } else {
+        return
+    }
 }
 function inputCheck() {
     let player = document.getElementById("player")
     let playerGuess = playerInput.value
-    let playerArray = []
+    if (playerArray.includes(playerGuess)) {
+        playerInput.value = ""
+        return alert("you already selected this letter")
+    }
     if (wordArray.includes(playerGuess)) {
-        let inxPos = wordArray.indexOf(playerGuess)
-        let arrayofPlayer = []
-        for (idx = 0; idx < wordArray.length; idx++) {
-            if (wordArray[idx] === playerGuess)
-                playerArray = playerArray + playerArray.splice(idx, 0, playerGuess)
-        }
-        arrayofPlayer.splice(1, 0, playerGuess)
-        console.log(inxPos)
-        console.log(playerGuess)
-        console.log(arrayofPlayer)
-        console.log("Correct")
+        wordArray.forEach(function (letter, position) {
+            if (letter === playerGuess) {
+                console.log("yesh")
+                playerArray.splice(position, 0, playerGuess)
+
+                return winChecker()
+            }
+        })
+
         playerInput.value = ""
 
     } else {
@@ -59,7 +70,11 @@ function inputCheck() {
         player.style.marginLeft = playerMover + "px"
         console.log("not Correct")
         playerInput.value = ""
-
+        playerLife = playerLife - 1;
+        console.log(playerLife)
+        if (playerLife === 2) {
+            console.log("You Died")
+        }
     }
 }
 function wordSpliter() {
@@ -95,10 +110,10 @@ function tileMaker() {
 
 function wordChooser() {
     river.textContent = ""
-    let wordChooser = Math.floor(Math.random() * 100);
+    let wordChooser = Math.floor(Math.random() * 4);
     wordChoosen = arrayWords[wordChooser];
+    playerLife = wordChoosen.length
     return wordChoosen
 }
-
 
 
