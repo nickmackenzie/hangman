@@ -1,0 +1,40 @@
+
+h1 {
+    text-align: center;
+}
+.container {
+    display: flex;
+    justify-content: center;
+}
+.gameboard {
+    border: 2px solid black;
+    width: 500px;
+    height: 500px;
+    background: green;
+}
+.input-container {
+    display: flex;
+    justify-content: center;
+}
+
+#river {
+    display: flex;
+    flex-direction: row;
+   
+}
+
+.water {
+    height: 25px;
+    width: 25px;
+    background-color: blue;
+}
+
+.water-block {
+    display: flex;
+    flex-direction: column;
+}
+.player {
+    background-color: yellow;
+    width: 100px;
+    height: 100px;
+}
