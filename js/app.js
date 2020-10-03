@@ -4,7 +4,7 @@ let blank = " _"
 let wordChoosen = ""
 let tileLength = 0;
 let wordArray = []
-let arrayWords = ['potatoes', 'carrots', 'onions', 'turrrrnips']
+let arrayWords = ['potatoes', 'onions', 'turnips']
 let playBtn = document.getElementById("playBtn")
 let playerInput = document.getElementById("player-guess")
 let guessBtn = document.getElementById("guess-btn")
@@ -14,7 +14,8 @@ let playerGuess = []
 let playerLife = wordArray.length
 let playerArray = []
 let correctAnswerArray = []
-
+let filledArray = []
+let blankey = document.createElement("div")
 
 
 
@@ -40,16 +41,13 @@ function playButton() {
 
 function blankMaker() {
 
-    let filledArray = new Array(playerLife).fill('_ ');
-    let blankey = document.createElement("div")
-    blankey.innerHTML = filledArray.join("");
-    word.append(blankey)
+    filledArray = new Array(playerLife).fill('_ ');
+
     console.log(filledArray)
 }
 function winChecker() {
     var wordString = wordArray.toString()
-    var playerString = playerArray.toString()
-
+    var playerString = filledArray.toString()
     if (wordString === playerString) {
         alert("you win")
     } else {
@@ -66,10 +64,11 @@ function inputCheck() {
     if (wordArray.includes(playerGuess)) {
         wordArray.forEach(function (letter, position) {
             if (letter === playerGuess) {
-                console.log("yesh")
                 playerArray.splice(position, 0, playerGuess)
-
-                return winChecker()
+                filledArray.splice(position, 1, playerGuess)
+                blankey.innerHTML = filledArray.join("");
+                word.append(blankey)
+                winChecker()
             }
         })
 
@@ -121,7 +120,7 @@ function tileMaker() {
 
 function wordChooser() {
     river.textContent = ""
-    let wordChooser = Math.floor(Math.random() * 4);
+    let wordChooser = Math.floor(Math.random() * 3);
     wordChoosen = arrayWords[wordChooser];
     playerLife = wordChoosen.length
     return wordChoosen
