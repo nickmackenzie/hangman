@@ -8,6 +8,7 @@ let arrayWords = ['potatoes', 'carrots', 'onions', 'turrrrnips']
 let playBtn = document.getElementById("playBtn")
 let playerInput = document.getElementById("player-guess")
 let guessBtn = document.getElementById("guess-btn")
+let blankWord = document.getElementById("word")
 let playerMover = 0;
 let playerGuess = []
 let playerLife = wordArray.length
@@ -33,9 +34,18 @@ function playButton() {
     wordChooser()
     wordSpliter()
     tileMaker()
+    blankMaker()
+
 }
 
+function blankMaker() {
 
+    let filledArray = new Array(playerLife).fill('_ ');
+    let blankey = document.createElement("div")
+    blankey.innerHTML = filledArray.join("");
+    word.append(blankey)
+    console.log(filledArray)
+}
 function winChecker() {
     var wordString = wordArray.toString()
     var playerString = playerArray.toString()
@@ -92,16 +102,17 @@ function tileMaker() {
         let newTile = document.createElement("div")
         newTile.className = "water"
         newTile.id = idx
+        newTile.innerHTML = '<img src=\'img/water.png\'>';
         river.append(newTile)
         if (newTile.id === "0") {
             let playerTile = document.createElement("div")
             playerTile = newTile
-            newTile.style.backgroundColor = "yellow"
             newTile.className = "player"
             newTile.style.width = "25px"
             newTile.style.height = "25px"
             newTile.style.position = "absolute"
             newTile.id = "player"
+            newTile.innerHTML = '<img src=\'img/person.gif\'>';
         }
     })
 
