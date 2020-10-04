@@ -1,6 +1,10 @@
 * {
   font-family: "Anton", sans-serif;
 }
+html {
+  height: 100%;
+}
+
 h1 {
   text-align: center;
 }
@@ -10,9 +14,13 @@ h1 {
 }
 .gameboard {
   border: 2px solid black;
-  width: 500px;
-  height: 500px;
+  width: 640px;
+  height: 640px;
   background: green;
+  background-image: url(/img/bg.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: containe;
 }
 .input-container {
   display: flex;
@@ -25,7 +33,9 @@ h1 {
   display: flex;
   flex-direction: row;
 }
-
+.waterfall {
+  margin-top: 40px;
+}
 .water {
   height: 50px;
   width: 25px;

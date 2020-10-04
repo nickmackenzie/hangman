@@ -3,7 +3,17 @@ let blank = " _";
 let wordChoosen = "";
 let tileLength = 0;
 let wordArray = [];
-let arrayWords = ["potatoes", "onions", "turnips"];
+let arrayWords = [
+  "potatoes",
+  "onions",
+  "turnips",
+  "oranges",
+  "cow",
+  "chessey",
+  "pizza",
+  "girl",
+  "mackenzie",
+];
 let playBtn = document.getElementById("playBtn");
 let playerInput = document.getElementById("player-guess");
 let guessBtn = document.getElementById("guess-btn");
@@ -32,7 +42,6 @@ function playButton() {
 
 function blankMaker() {
   filledArray = new Array(playerLife).fill("_ ");
-
   console.log(filledArray);
 }
 function winChecker() {
@@ -44,6 +53,7 @@ function winChecker() {
     return;
   }
 }
+
 function inputCheck() {
   let player = document.getElementById("player");
   let playerGuess = playerInput.value;
@@ -89,7 +99,7 @@ function tileMaker() {
     let newTile = document.createElement("div");
     newTile.className = "water";
     newTile.id = idx;
-    newTile.innerHTML = "<img src='img/water.png'>";
+    newTile.innerHTML = "<img src='img/watertile.png'>";
     river.append(newTile);
     if (newTile.id === "0") {
       let playerTile = document.createElement("div");
@@ -98,6 +108,7 @@ function tileMaker() {
       newTile.style.width = "25px";
       newTile.style.height = "25px";
       newTile.style.position = "absolute";
+      newTile.style.marginTop = "50px";
       newTile.id = "player";
       newTile.innerHTML = "<img src='img/person.gif'>";
     }
@@ -106,7 +117,7 @@ function tileMaker() {
 
 function wordChooser() {
   river.textContent = "";
-  let wordChooser = Math.floor(Math.random() * 3);
+  let wordChooser = Math.floor(Math.random() * 9);
   wordChoosen = arrayWords[wordChooser];
   playerLife = wordChoosen.length;
   return wordChoosen;
