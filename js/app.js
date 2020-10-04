@@ -36,10 +36,13 @@ playBtn.addEventListener("click", playButton);
 guessBtn.addEventListener("click", inputCheck);
 
 function playButton() {
+  playerArray = [];
   wordChooser();
   wordSpliter();
   tileMaker();
   blankMaker();
+  blankey.innerHTML = filledArray.join("");
+  word.append(blankey);
 }
 
 function blankMaker() {
@@ -89,12 +92,11 @@ function inputCheck() {
     }
   }
 }
+
 function wordSpliter() {
   wordArray = wordChoosen.split("");
   console.log(wordArray);
 }
-
-// function winChecker()
 
 function tileMaker() {
   tileLength = wordChoosen.length;
