@@ -18,6 +18,7 @@ let playBtn = document.getElementById("playBtn");
 let playerInput = document.getElementById("player-guess");
 let guessBtn = document.getElementById("guess-btn");
 let blankWord = document.getElementById("word");
+let waterfall = document.getElementById("waterfall");
 let playerMover = 0;
 let playerGuess = [];
 let playerLife = wordArray.length;
@@ -25,6 +26,7 @@ let playerArray = [];
 let correctAnswerArray = [];
 let filledArray = [];
 let blankey = document.createElement("div");
+let scream = new Audio("/sounds/scream.mp3");
 
 function playerMoverFun() {
   return (playerMover = playerMover += 25);
@@ -80,8 +82,10 @@ function inputCheck() {
     playerInput.value = "";
     playerLife = playerLife - 1;
     console.log(playerLife);
-    if (playerLife === 2) {
+    if (playerLife === 0) {
       console.log("You Died");
+      player.className = "scale-out-tr";
+      scream.play();
     }
   }
 }
@@ -116,6 +120,7 @@ function tileMaker() {
 }
 
 function wordChooser() {
+  waterfall.style.display = "block";
   river.textContent = "";
   let wordChooser = Math.floor(Math.random() * 9);
   wordChoosen = arrayWords[wordChooser];
