@@ -25,6 +25,12 @@
             <img id="waterfall" src="/img/waterfall.png" />
             <div id="player"></div>
           </div>
+          <div id="notification-winner">
+            <p id="winner">You Win!</p>
+          </div>
+          <div id="notification-lost">
+            <p id="lost">You Lost!</p>
+          </div>
         </div>
         <div class="input-container">
           <button id="playBtn">Play <i class="fas fa-play fa-2x"></i></button>
@@ -46,12 +52,14 @@
         </div>
         <div class="hint-box">
           <button id="show-hint">
-            Show Hint <i class="far fa-question-circle fa-2x"></i>
+            <img src="/img/hintgiver.png" width="80px" alt="" />
+            <div class="speech-bubble">Need a hint? Click me!</div>
           </button>
           <div id="hint"></div>
         </div>
       </div>
     </div>
+
     <script src="/js/app.js"></script>
   </body>
 </html>

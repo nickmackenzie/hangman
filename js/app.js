@@ -40,6 +40,8 @@ let playerTile = document.createElement("div");
 let player = document.getElementById("player");
 let guessDiv = document.getElementById("guessed");
 let guessedLetters = [];
+let winNotification = document.getElementById("notification-winner");
+let lostNotification = document.getElementById("notification-lost");
 
 let hint = {
   0: "the activity of spending a vacation living in a camp, tent, or camper.",
@@ -119,7 +121,11 @@ function winChecker() {
   var wordString = wordArray.toString();
   var playerString = filledArray.toString();
   if (wordString === playerString) {
-    alert("you win");
+    winNotification.className = "slide-in-bottom";
+    winNotification.style.display = "block";
+    setTimeout(function () {
+      winNotification.className = "slide-out-bottom";
+    }, 1250);
   } else {
     return;
   }
@@ -154,8 +160,12 @@ function inputCheck() {
     playerLife = playerLife - 1;
     console.log(playerLife);
     if (playerLife === 0) {
-      console.log("You Died");
+      lostNotification.className = "slide-in-bottom";
+      lostNotification.style.display = "block";
       player.className = "scale-out-right";
+      setTimeout(function () {
+        lostNotification.className = "slide-out-bottom";
+      }, 1250);
       scream.play();
     }
   }
@@ -163,9 +173,12 @@ function inputCheck() {
 
 function showHint() {
   hintBox.innerHTML = hint[wordChooserBrain];
-  if (hintBox.style.display === "none") {
-    hintBox.style.display = "flex";
-  } else {
+  if (hintBox.innerHTML === "undefined") {
+    hintBox.innerHTML = "You need to start the game to get a hint!";
+  }
+  if (hintBox.style.display === "flex") {
     hintBox.style.display = "none";
+  } else {
+    hintBox.style.display = "flex";
   }
 }

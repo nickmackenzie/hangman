@@ -113,8 +113,8 @@ input:focus {
 
 .word-wrap {
   margin: 40px;
-  width: 200px;
-  height: 500px;
+  width: 300px;
+  height: 600px;
   border: 2px black solid;
   padding: 10px;
   opacity: 0.8;
@@ -134,14 +134,15 @@ i {
   padding: 5px;
 }
 #show-hint {
+  padding: 10px;
   margin: 0;
   display: flex;
   align-items: center;
   justify-content: space-around;
   background-color: #76cb8f;
-  padding: 12px;
+  border-radius: 23px;
   font-size: 1rem;
-  border: 2px solid black;
+  border: none;
   border-radius: 3px;
   cursor: pointer;
 }
@@ -152,6 +153,7 @@ i {
 }
 
 #hint {
+  border: 2px solid black;
   margin: 4px;
   padding: 2px;
   background-color: rgb(255, 255, 255);
@@ -176,4 +178,29 @@ i {
 }
 #playBtn:hover {
   opacity: 1;
+}
+
+#notification-lost {
+  display: none;
+  font-size: 1.5rem;
+  border-radius: 12px;
+  background: #f65959;
+  color: white;
+  width: 200px;
+  text-align: center;
+  margin-left: 220px;
+  margin-top: 100px;
+  position: absolute;
+}
+
+#notification-winner {
+  display: none;
+  font-size: 1.5rem;
+  border-radius: 12px;
+  background: #7bf659;
+  width: 200px;
+  text-align: center;
+  margin-left: 220px;
+  margin-top: 100px;
+  position: absolute;
 }
