@@ -27,13 +27,17 @@ let correctAnswerArray = [];
 let filledArray = [];
 let blankey = document.createElement("div");
 let scream = new Audio("/sounds/scream.mp3");
+// let playerCanoe = { c1: "<img src='img/person.gif'>" }
+let playerCanoe = { c1: "<img src='img/giphy.gif'>" }
+
+
+playBtn.addEventListener("click", playButton);
+guessBtn.addEventListener("click", inputCheck);
+
 
 function playerMoverFun() {
   return (playerMover = playerMover += 25);
 }
-
-playBtn.addEventListener("click", playButton);
-guessBtn.addEventListener("click", inputCheck);
 
 function playButton() {
   playerArray = [];
@@ -110,13 +114,13 @@ function tileMaker() {
     if (newTile.id === "0") {
       let playerTile = document.createElement("div");
       playerTile = newTile;
-      newTile.className = "player slide-in-left";
-      newTile.style.width = "25px";
-      newTile.style.height = "25px";
-      newTile.style.position = "absolute";
-      newTile.style.marginTop = "50px";
-      newTile.id = "player";
-      newTile.innerHTML = "<img src='img/person.gif'>";
+      playerTile.className = "player slide-in-left";
+      playerTile.style.width = "25px";
+      playerTile.style.height = "25px";
+      playerTile.style.position = "absolute";
+      playerTile.style.marginTop = "50px";
+      playerTile.id = "player";
+      playerTile.innerHTML = playerCanoe.c1;
     }
   });
 }
