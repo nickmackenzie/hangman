@@ -28,8 +28,13 @@ let correctAnswerArray = [];
 let filledArray = [];
 let blankey = document.createElement("div");
 let scream = new Audio("/sounds/scream.mp3");
-let playerCanoe = { c1: "<img src='img/person.gif'>" }
+let playerOptions = {
+  c1: "<img src='img/person.gif'>", c1: "<img src='img/person.gif'>", c1: "<img src='img/person.gif'>",
+  easy: "easy", med: "medium", hard: "hard"
+}
 let playerTile = document.createElement("div");
+let player = document.getElementById("player");
+
 
 
 
@@ -42,10 +47,11 @@ function playerMoverFun() {
 }
 
 function playButton() {
+  player.innerHTML = playerOptions.c1
+  player.style.removeProperty("margin-left");
+  playerMover = 0;
   playerArray = [];
-
   wordChooser();
-  wordSpliter();
   tileMaker();
   blankMaker();
   blankey.innerHTML = filledArray.join("");
@@ -59,32 +65,22 @@ function wordChooser() {
   let wordChooser = Math.floor(Math.random() * 9);
   wordChoosen = arrayWords[wordChooser];
   playerLife = wordChoosen.length;
+  wordArray = wordChoosen.split("");
   return wordChoosen;
 }
 
-function wordSpliter() {
-  wordArray = wordChoosen.split("");
-  console.log(wordArray);
-}
+
 
 function tileMaker() {
   tileLength = wordChoosen.length;
-  let tileString = tileLength.toString();
+  let waterFallTile = wordArray.length - 1;
+  let waterString = waterFallTile.toString()
   wordArray.forEach(function (word, idx) {
     let newTile = document.createElement("div");
     newTile.className = "water";
     newTile.id = idx;
     newTile.innerHTML = "<img src='img/watertile.png'>";
     river.append(newTile);
-    if (newTile.id === "0") { // I could make (array.length - 1) the water fall tile from this. Get rid of the player tile as 
-      playerTile = newTile;  // Its hard to control and it will be easier to control.
-      playerTile.className = "player";
-      playerTile.style.width = "25px";
-      playerTile.style.height = "25px";
-      playerTile.style.position = "absolute";
-      playerTile.id = "player";
-      playerTile.innerHTML = playerCanoe.c1;
-    }
   });
 }
 
@@ -103,7 +99,6 @@ function winChecker() {
 }
 
 function inputCheck() {
-  let player = document.getElementById("player");
   let playerGuess = playerInput.value;
   if (playerArray.includes(playerGuess)) {
     playerInput.value = "";
