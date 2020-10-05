@@ -3,7 +3,7 @@
 }
 html {
   height: 100%;
-  background-color: #5DC43F;
+
 }
 h1 {
   text-align: center;
@@ -75,6 +75,7 @@ input {
   display: flex;
 }
 #player {
+  margin-top:200px;
   margin-left:0;
   width: 100px;
   height: 100px;
