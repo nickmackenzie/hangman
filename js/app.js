@@ -43,21 +43,27 @@ guessBtn.addEventListener("click", inputCheck);
 
 
 function playerMoverFun() {
-  return (playerMover = playerMover += 25);
+  return (playerMover = playerMover += 45);
 }
 
 function playButton() {
-  player.innerHTML = playerOptions.c1
-  player.style.removeProperty("margin-left");
-  playerMover = 0;
-  playerArray = [];
+  gameReset()
   wordChooser();
   tileMaker();
   blankMaker();
   blankey.innerHTML = filledArray.join("");
   word.append(blankey);
+  setTimeout(function () { player.className = ""; }, 600);
 }
 
+function gameReset() {
+  player.innerHTML = playerOptions.c1
+  player.style.removeProperty("margin-left");
+  player.className = "slide-in-left"
+
+  playerMover = 0;
+  playerArray = [];
+}
 
 function wordChooser() {
   waterfall.style.display = "block";
@@ -125,7 +131,7 @@ function inputCheck() {
     console.log(playerLife);
     if (playerLife === 0) {
       console.log("You Died");
-      player.className = "scale-out-tr";
+      player.className = "scale-out-right";
       scream.play();
     }
   }
