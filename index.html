@@ -7,9 +7,13 @@
     <link rel="stylesheet" href="/css/style.css" />
     <link rel="stylesheet" href="/css/animations.css" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Love+Ya+Like+A+Sister&family=Open+Sans&display=swap"
       rel="stylesheet"
     />
+    <script
+      src="https://kit.fontawesome.com/4ee0467ea4.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
 
   <body>
@@ -23,7 +27,7 @@
           </div>
         </div>
         <div class="input-container">
-          <button id="playBtn">Play</button>
+          <button id="playBtn">Play <i class="fas fa-play fa-2x"></i></button>
           <div class="guess">
             <input placeholder="Enter a Letter" id="player-guess" type="text" />
             <button id="guess-btn">Guess</button>
@@ -31,16 +35,19 @@
         </div>
       </div>
       <div class="word-wrap">
+        <h2 class="title">Don't Fall off the waterfall</h2>
         <div class="mystery-word">
           <h2>Word:</h2>
           <div id="word"></div>
         </div>
         <div class="guess-letter">
-          <h2>Letters already guessed:</h2>
+          <h2>Guessed Letters:</h2>
           <div id="guessed"></div>
         </div>
         <div class="hint-box">
-          <button id="show-hint">Show Hint</button>
+          <button id="show-hint">
+            Show Hint <i class="far fa-question-circle fa-2x"></i>
+          </button>
           <div id="hint"></div>
         </div>
       </div>

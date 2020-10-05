@@ -163,4 +163,9 @@ function inputCheck() {
 
 function showHint() {
   hintBox.innerHTML = hint[wordChooserBrain];
+  if (hintBox.style.display === "none") {
+    hintBox.style.display = "flex";
+  } else {
+    hintBox.style.display = "none";
+  }
 }
