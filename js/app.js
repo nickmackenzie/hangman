@@ -41,27 +41,22 @@ let player = document.getElementById("player");
 let guessDiv = document.getElementById("guessed");
 let guessedLetters = [];
 
-let hints = {
-  hint1:
-    "the activity of spending a vacation living in a camp, tent, or camper.",
-  hint2:
-    "a portable shelter made of cloth, supported by one or more poles and stretched tight by cords or loops attached to pegs driven into the ground.",
-  hint3:
-    "the rapid oxidation of a material in the exothermic chemical process of combustion, releasing heat, light, and various reaction products.",
-  hint4:
-    "a woody perennial plant, typically having a single stem or trunk growing to a considerable height and bearing lateral branches at some distance from the ground.",
-  hint5: "a small axe with a short handle for use in one hand.",
-  hint6:
-    "a living organism that feeds on organic matter, typically having specialized sense organs and nervous system and able to respond rapidly to stimuli.",
-  hint7: "a country in North America: the second largest country in the world.",
-  hint8:
-    "a narrow, keelless boat with pointed ends, propelled by a paddle or paddles.",
-  hint9: "a large body of water surrounded by land.",
+let hint = {
+  0: "the activity of spending a vacation living in a camp, tent, or camper.",
+  1: "a portable shelter made of cloth, supported by one or more poles and stretched tight by cords or loops attached to pegs driven into the ground.",
+  2: "the rapid oxidation of a material in the exothermic chemical process of combustion, releasing heat, light, and various reaction products.",
+  3: "a woody perennial plant, typically having a single stem or trunk growing to a considerable height and bearing lateral branches at some distance from the ground.",
+  4: "a small axe with a short handle for use in one hand.",
+  5: "a living organism that feeds on organic matter, typically having specialized sense organs and nervous system and able to respond rapidly to stimuli.",
+  6: "a country in North America: the second largest country in the world.",
+  7: "a narrow, keelless boat with pointed ends, propelled by a paddle or paddles.",
+  8: "a large body of water surrounded by land.",
 };
 
 let hintBtn = document.getElementById("show-hint");
 let hintBox = document.getElementById("hint");
-let wordChooserBrain = Math.floor(Math.random() * 9);
+
+let wordChooserBrain;
 
 playBtn.addEventListener("click", playButton);
 guessBtn.addEventListener("click", inputCheck);
@@ -87,12 +82,14 @@ function gameReset() {
   player.innerHTML = playerOptions.c1;
   player.style.removeProperty("margin-left");
   player.className = "slide-in-left";
-  guessDiv.innerHTML = "";
+  guessedLetters = [];
+  guessDiv.textContent = "";
   playerMover = 0;
   playerArray = [];
 }
 
 function wordChooser() {
+  wordChooserBrain = Math.floor(Math.random() * 9);
   waterfall.style.display = "block";
   river.textContent = "";
   wordChoosen = arrayWords[wordChooserBrain];
@@ -133,8 +130,6 @@ function inputCheck() {
 
   guessedLetters.push(playerGuess);
   guessDiv.innerHTML = guessedLetters;
-
-  console.log(guessedLetters);
   if (playerArray.includes(playerGuess)) {
     playerInput.value = "";
     return alert("you already selected this letter");
@@ -167,5 +162,5 @@ function inputCheck() {
 }
 
 function showHint() {
-  hintBox.innerHTML = hints.hint1;
+  hintBox.innerHTML = hint[wordChooserBrain];
 }
