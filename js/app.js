@@ -64,6 +64,12 @@ playBtn.addEventListener("click", playButton);
 guessBtn.addEventListener("click", inputCheck);
 hintBtn.addEventListener("click", showHint);
 
+playerInput.addEventListener("keyup", function (e) {
+  if (e.keyCode === 13) {
+    inputCheck();
+  }
+});
+
 function playerMoverFun() {
   return (playerMover = playerMover += 45);
 }
@@ -87,6 +93,7 @@ function gameReset() {
   guessedLetters = [];
   guessDiv.textContent = "";
   playerMover = 0;
+  hintBox.style.display = "none";
   playerArray = [];
 }
 
