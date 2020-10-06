@@ -33,7 +33,7 @@ let playerGuess = [];
 let playerLife = wordArray.length;
 let wordChooserBrain;
 
-//<!--Gamedatabase-->//
+//<!--Game database-->//
 let arrayWords = [
   "camping",
   "tent",
@@ -73,7 +73,7 @@ guessBtn.addEventListener("click", inputCheck);
 hintBtn.addEventListener("click", showHint);
 playerInput.addEventListener("keyup", function (e) {
   if (e.keyCode === 13) {
-    inputCheck();
+    inputCheckCampaign();
   }
 });
 
@@ -83,7 +83,6 @@ function playButton() {
   gameReset();
   wordChooser();
   tileMaker();
-  // blankMaker();
   blankey.innerHTML = filledArray.join("");
   word.append(blankey);
   setTimeout(function () {
@@ -186,7 +185,123 @@ function showHint() {
   }
 }
 
-var x = document.getElementById("txt");
-setTimeout(function () {
-  x.value = "2 seconds";
-}, 2000);
+//Campaign Area
+
+var x = document.getElementById("countdown");
+let playerScore = 0;
+
+let campBtn = document.getElementById("campBtn");
+let score = document.getElementById("player-score");
+campBtn.addEventListener("click", playCampaign);
+
+function playCampaign() {
+  setInterval(function () {
+    x.value = x.value += 1;
+  }, 500);
+  gameResetCampaign();
+  wordChooserCampaign();
+  tileMakerCampaign();
+  blankey.innerHTML = filledArray.join("");
+  word.append(blankey);
+  setTimeout(function () {
+    player.className = "";
+  }, 600);
+}
+
+function gameResetCampaign() {
+  player.innerHTML = playerOptions.c1;
+  player.style.removeProperty("margin-left");
+  player.className = "slide-in-left";
+  guessedLetters = [];
+  guessDiv.textContent = "";
+  playerMover = 0;
+  hintBox.style.display = "none";
+  playerArray = [];
+}
+
+function wordChooserCampaign() {
+  wordChooserBrain = Math.floor(Math.random() * 9);
+  waterfall.style.display = "block";
+  river.textContent = "";
+  wordChoosen = arrayWords[wordChooserBrain];
+  playerLife = wordChoosen.length;
+  wordArray = wordChoosen.split("");
+  return wordChoosen;
+}
+
+function tileMakerCampaign() {
+  wordArray.forEach(function (word, idx) {
+    let newTile = document.createElement("div");
+    newTile.className = "water";
+    newTile.id = idx;
+    newTile.innerHTML = "<img src='img/watertile.png'>";
+    filledArray = new Array(playerLife).fill("_ ");
+    river.append(newTile);
+  });
+}
+
+function winCheckerCampaign() {
+  var wordString = wordArray.toString();
+  var playerString = filledArray.toString();
+  if (wordString === playerString) {
+    playButton();
+    winNotification.className = "slide-in-bottom";
+    winNotification.style.display = "block";
+    playerScore = playerScore + 1;
+    score.innerText = playerScore;
+    setTimeout(function () {
+      winNotification.className = "slide-out-bottom";
+    }, 1250);
+  } else {
+    return;
+  }
+}
+
+function inputCheckCampaign() {
+  let playerGuess = playerInput.value;
+  guessedLetters.push(playerGuess);
+  guessDiv.innerHTML = guessedLetters;
+  if (playerArray.includes(playerGuess)) {
+    playerInput.value = "";
+    return alert("you already selected this letter");
+  }
+  if (wordArray.includes(playerGuess)) {
+    wordArray.forEach(function (letter, position) {
+      if (letter === playerGuess) {
+        playerArray.splice(position, 0, playerGuess);
+        filledArray.splice(position, 1, playerGuess);
+        blankey.innerHTML = filledArray.join("");
+        word.append(blankey);
+        winCheckerCampaign();
+      }
+    });
+    playerInput.value = "";
+  } else {
+    //<--This is what move the player when the answer is wrong. I cant adjust this in px-->//
+    playerMover = playerMover += 45;
+    player.style.marginLeft = playerMover + "px";
+    playerInput.value = "";
+    playerLife = playerLife - 1;
+    if (playerLife === 0) {
+      lostNotification.className = "slide-in-bottom";
+      lostNotification.style.display = "block";
+      player.className = "scale-out-right";
+      setTimeout(function () {
+        lostNotification.className = "slide-out-bottom";
+      }, 1250);
+      scream.play();
+    }
+  }
+}
+
+function showHintCampaign() {
+  hintBox.innerHTML = hint[wordChooserBrain];
+  if (hintBox.innerHTML === "undefined") {
+    hintBox.innerHTML = "You need to start the game to get a hint!";
+  }
+  if (hintBox.style.display === "flex") {
+    hintBox.style.display = "none";
+  } else {
+    hintBox.style.display = "flex";
+  }
+}

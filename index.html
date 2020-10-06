@@ -34,6 +34,9 @@
         </div>
         <div class="input-container">
           <button id="playBtn">Play <i class="fas fa-play fa-2x"></i></button>
+          <button id="campBtn">
+            Play Campaign <i class="fas fa-play fa-2x"></i>
+          </button>
           <div class="guess">
             <input placeholder="Enter a Letter" id="player-guess" type="text" />
             <button id="guess-btn">Guess</button>
@@ -42,8 +45,9 @@
       </div>
       <div class="word-wrap">
         <h2 class="title">Don't Fall off the waterfall!</h2>
-        <label for="countdown">File progress:</label>
-        <progress id="coundown" max="100" value="70">70%</progress>
+        <label for="countdown">Countdown</label>
+        <div id="player-score"></div>
+        <progress id="countdown" max="100" min="0" value="0">0</progress>
         <div class="mystery-word">
           <h2>Word:</h2>
           <div id="word"></div>
