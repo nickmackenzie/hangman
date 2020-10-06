@@ -399,3 +399,7 @@ function gamemodeSwitcher() {
       }
     });
 }
+
+function achievments() {
+  console.log("ok");
+}
