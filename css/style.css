@@ -93,6 +93,8 @@ input:focus {
 }
 
 .word-wrap {
+  display: flex;
+  justify-content: space-evenly;
   background-color: #eee;
 }
 
@@ -210,4 +212,8 @@ i {
   margin-left: 220px;
   margin-top: 100px;
   position: absolute;
+}
+
+.guess-letter {
+  margin: 10px;
 }
