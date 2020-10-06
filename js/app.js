@@ -185,3 +185,8 @@ function showHint() {
     hintBox.style.display = "flex";
   }
 }
+
+var x = document.getElementById("txt");
+setTimeout(function () {
+  x.value = "2 seconds";
+}, 2000);
