@@ -169,7 +169,7 @@ function inputCheck() {
       setTimeout(function () {
         lostNotification.className = "slide-out-bottom";
       }, 1250);
-      scream.play();
+      // scream.play();
     }
   }
 }
