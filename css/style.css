@@ -37,14 +37,6 @@ h2 {
   background-position: center;
   background-size: contain;
 }
-.input-container {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  width: 50%;
-  margin-top: 20px;
-  position: absolute;
-}
 
 input {
   text-align: center;
@@ -172,18 +164,13 @@ i {
 #playBtn {
   display: flex;
   background-color: #76cb8f;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 20px;
-  width: 90px;
-  height: 80px;
   text-transform: uppercase;
   font-size: 1rem;
   cursor: pointer;
   opacity: 0.8;
-  border: 2px solid black;
-  border-radius: 4px;
+  border: 2px black solid;
+  margin: 2px;
 }
 #playBtn:hover {
   opacity: 1;
@@ -216,4 +203,52 @@ i {
 
 .guess-letter {
   margin: 10px;
+}
+
+.fa-heart {
+  color: red;
+}
+
+#gamemode {
+  display: flex;
+  justify-content: space-evenly;
+  top: 50px;
+  left: 200px;
+  position: absolute;
+  width: 250px;
+  padding: 10px;
+  height: 100px;
+  background-color: rgba(0, 0, 0, 0.411);
+  border-radius: 20px;
+}
+.input-container {
+  left: 100px;
+  padding-top: 40px;
+  margin: 10px;
+  display: flex;
+  flex-direction: row;
+  display: none;
+  margin-top: 20px;
+  position: absolute;
+}
+#campaign-container {
+  left: 100px;
+  padding-top: 40px;
+  margin: 10px;
+  display: flex;
+  flex-direction: row;
+  display: none;
+  margin-top: 20px;
+  position: absolute;
+}
+#normal-mode,
+#arcade-mode {
+  background-color: white;
+  border: none;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }
