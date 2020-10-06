@@ -89,10 +89,11 @@ function playButton() {
   gamemode.style.display = "none";
   normalModeContainer.style.display = "flex";
   gamemodeSwitch = true;
-  gamemodeSwitcher();
+  // gamemodeSwitcher();
   gameReset();
   wordChooser();
   tileMaker();
+  clearInterval(countDownInterval);
   blankey.innerHTML = filledArray.join("");
   word.append(blankey);
   setTimeout(function () {
@@ -213,21 +214,10 @@ function playCampaign() {
   arcadeContainer.style.display = "flex";
   countDownInterval = setInterval(countdownTimer, 1000);
   gameResetCampaign();
-  gamemodeSwitcher();
+  // gamemodeSwitcher();
   wordChooserCampaign();
   tileMakerCampaign();
-  heart = [
-    `<i class="fas fa-heart"></i>`,
-    `<i class="fas fa-heart"></i>`,
-    `<i class="fas fa-heart"></i>`,
-    `<i class="fas fa-heart"></i>`,
-    `<i class="fas fa-heart"></i>`,
-    `<i class="fas fa-heart"></i>`,
-    `<i class="fas fa-heart"></i>`,
-    `<i class="fas fa-heart"></i>`,
-    `<i class="fas fa-heart"></i>`,
-    `<i class="fas fa-heart"></i>`,
-  ];
+
   playerBar.innerHTML = heart.join("");
   blankey.innerHTML = filledArray.join("");
   word.append(blankey);
@@ -243,6 +233,8 @@ function countdownTimer() {
     lostNotification.className = "slide-in-bottom";
     lostNotification.style.display = "block";
     player.className = "scale-out-right";
+
+    playCampaign();
     setTimeout(function () {
       lostNotification.className = "slide-out-bottom";
     }, 1250);
@@ -286,7 +278,7 @@ function winCheckerCampaign() {
   var wordString = wordArray.toString();
   var playerString = filledArray.toString();
   if (wordString === playerString) {
-    playButton();
+    playCampaign();
     winNotification.className = "slide-in-bottom";
     winNotification.style.display = "block";
     playerScore = playerScore + 1;
@@ -332,6 +324,19 @@ function inputCheckCampaign() {
       setTimeout(function () {
         lostNotification.className = "slide-out-bottom";
       }, 1250);
+      heart = [
+        `<i class="fas fa-heart"></i>`,
+        `<i class="fas fa-heart"></i>`,
+        `<i class="fas fa-heart"></i>`,
+        `<i class="fas fa-heart"></i>`,
+        `<i class="fas fa-heart"></i>`,
+        `<i class="fas fa-heart"></i>`,
+        `<i class="fas fa-heart"></i>`,
+        `<i class="fas fa-heart"></i>`,
+        `<i class="fas fa-heart"></i>`,
+        `<i class="fas fa-heart"></i>`,
+      ];
+      playCampaign();
       // scream.play();
     }
   }
@@ -385,17 +390,23 @@ function showPopup() {
   }
 }
 
-function gamemodeSwitcher() {
-  if (gamemodeSwitch === false)
-    playerInputArcade.addEventListener("keyup", function (e) {
-      if (e.keyCode === 13) {
-        inputCheckCampaign();
-      }
-    });
-  else if (gamemodeSwitch === true)
-    playerInput.addEventListener("keyup", function (e) {
-      if (e.keyCode === 13) {
-        inputCheck();
-      }
-    });
-}
+playerInputArcade.addEventListener("keyup", function (e) {
+  inputCheckCampaign();
+});
+
+playerInput.addEventListener("keyup", function (e) {
+  inputCheck();
+});
+
+// function gamemodeSwitcher() {
+//   if (gamemodeSwitch === false)
+//
+//       if (e.keyCode === 13) {
+//         inputCheckCampaign();
+//       }
+//     });
+//   else if (gamemodeSwitch === true)
+//
+//       }
+//     });
+// }
