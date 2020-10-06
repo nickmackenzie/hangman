@@ -2,6 +2,7 @@
 let river = document.getElementById("river");
 let playBtn = document.getElementById("playBtn");
 let playerInput = document.getElementById("player-guess");
+let playerInputArcade = document.getElementById("arcade-guess");
 let guessBtn = document.getElementById("guess-btn");
 let blankWord = document.getElementById("word");
 let waterfall = document.getElementById("waterfall");
@@ -13,7 +14,11 @@ let player = document.getElementById("player");
 let guessDiv = document.getElementById("guessed");
 let hintBtn = document.getElementById("show-hint");
 let hintBox = document.getElementById("hint");
-
+let normalModeBtn = document.getElementById("normal-mode");
+let arcadeModeBtn = document.getElementById("arcade-mode");
+let arcadeContainer = document.getElementById("campaign-container");
+let modeBtn = document.getElementById("modeBtn");
+let playInfoBox = document.getElementById("playerInfo");
 //<!--HTML Creators-->//
 let blankey = document.createElement("div");
 let scream = new Audio("/sounds/scream.mp3");
@@ -26,6 +31,7 @@ let filledArray = [];
 let wordArray = [];
 let guessedLetters = [];
 let wordChoosen = "";
+let gamemodeSwitch = true;
 
 //<!--Game state-->//
 let playerMover = 0;
@@ -71,15 +77,19 @@ let playerOptions = {
 playBtn.addEventListener("click", playButton);
 guessBtn.addEventListener("click", inputCheck);
 hintBtn.addEventListener("click", showHint);
-playerInput.addEventListener("keyup", function (e) {
-  if (e.keyCode === 13) {
-    inputCheckCampaign();
-  }
-});
+normalModeBtn.addEventListener("click", playButton);
+arcadeModeBtn.addEventListener("click", playCampaign);
+modeBtn.addEventListener("click", showPopup);
 
 //<!--Game Functions-->//
-
+let gamemodePopup = document.getElementById("gamemode");
+let normalModeContainer = document.getElementById("normalInput");
 function playButton() {
+  playInfoBox.style.display = "none";
+  gamemode.style.display = "none";
+  normalModeContainer.style.display = "flex";
+  gamemodeSwitch = true;
+  gamemodeSwitcher();
   gameReset();
   wordChooser();
   tileMaker();
@@ -194,26 +204,57 @@ let playerHealth = 10;
 let campBtn = document.getElementById("campBtn");
 let score = document.getElementById("player-score");
 campBtn.addEventListener("click", playCampaign);
+let countDownInterval;
 
 function playCampaign() {
-  setInterval(function () {
-    x.value = x.value += 1;
-  }, 500);
+  gamemodeSwitch = false;
+  playInfoBox.style.display = "block";
+  gamemode.style.display = "none";
+  arcadeContainer.style.display = "flex";
+  countDownInterval = setInterval(countdownTimer, 1000);
   gameResetCampaign();
+  gamemodeSwitcher();
   wordChooserCampaign();
   tileMakerCampaign();
+  heart = [
+    `<i class="fas fa-heart"></i>`,
+    `<i class="fas fa-heart"></i>`,
+    `<i class="fas fa-heart"></i>`,
+    `<i class="fas fa-heart"></i>`,
+    `<i class="fas fa-heart"></i>`,
+    `<i class="fas fa-heart"></i>`,
+    `<i class="fas fa-heart"></i>`,
+    `<i class="fas fa-heart"></i>`,
+    `<i class="fas fa-heart"></i>`,
+    `<i class="fas fa-heart"></i>`,
+  ];
+  playerBar.innerHTML = heart.join("");
   blankey.innerHTML = filledArray.join("");
   word.append(blankey);
   setTimeout(function () {
     player.className = "";
   }, 600);
 }
-
+function countdownTimer() {
+  x.value = x.value += 1;
+  if (x.value === 100) {
+    x.value = 0;
+    clearInterval(countDownInterval);
+    lostNotification.className = "slide-in-bottom";
+    lostNotification.style.display = "block";
+    player.className = "scale-out-right";
+    setTimeout(function () {
+      lostNotification.className = "slide-out-bottom";
+    }, 1250);
+  }
+}
 function gameResetCampaign() {
+  x.value = "0";
   player.innerHTML = playerOptions.c1;
   player.style.removeProperty("margin-left");
   player.className = "slide-in-left";
   guessedLetters = [];
+  playerHealth = 10;
   guessDiv.textContent = "";
   playerMover = 0;
   hintBox.style.display = "none";
@@ -259,11 +300,11 @@ function winCheckerCampaign() {
 }
 
 function inputCheckCampaign() {
-  let playerGuess = playerInput.value;
+  let playerGuess = playerInputArcade.value;
   guessedLetters.push(playerGuess);
   guessDiv.innerHTML = guessedLetters;
   if (playerArray.includes(playerGuess)) {
-    playerInput.value = "";
+    playerInputArcade.value = "";
     return alert("you already selected this letter");
   }
   if (wordArray.includes(playerGuess)) {
@@ -276,14 +317,15 @@ function inputCheckCampaign() {
         winCheckerCampaign();
       }
     });
-    playerInput.value = "";
+    playerInputArcade.value = "";
   } else {
     //<--This is what move the player when the answer is wrong. I cant adjust this in px-->//
-    playerMover = playerMover += 45;
+    playerMover = playerMover += 20;
     player.style.marginLeft = playerMover + "px";
-    playerInput.value = "";
+    playerInputArcade.value = "";
     playerHealth = playerHealth - 1;
-    if (playerLife === 0) {
+    playerHealthBar();
+    if (playerHealth === 0 || x.value === "0") {
       lostNotification.className = "slide-in-bottom";
       lostNotification.style.display = "block";
       player.className = "scale-out-right";
@@ -306,10 +348,54 @@ function showHintCampaign() {
     hintBox.style.display = "flex";
   }
 }
-let heart = `<i class="far fa-heart"></i>`;
+
+let heart = [
+  `<i class="fas fa-heart"></i>`,
+  `<i class="fas fa-heart"></i>`,
+  `<i class="fas fa-heart"></i>`,
+  `<i class="fas fa-heart"></i>`,
+  `<i class="fas fa-heart"></i>`,
+  `<i class="fas fa-heart"></i>`,
+  `<i class="fas fa-heart"></i>`,
+  `<i class="fas fa-heart"></i>`,
+  `<i class="fas fa-heart"></i>`,
+  `<i class="fas fa-heart"></i>`,
+];
+let joinedHeart = heart.join("");
 let playerBar = document.getElementById("player-health");
+playerBar.innerHTML = heart.join("");
+
 function playerHealthBar() {
-  for (let i = 0; i < 10; i++) {
-    playerBar.innerHTML = heart;
+  heart.splice(playerHealth, 1, `<i class="far fa-heart"></i>`);
+  playerBar.innerHTML = heart.join("");
+}
+
+function showPopup() {
+  if (gamemodePopup.style.display === "none") {
+    arcadeContainer.style.display = "none";
+    normalModeContainer.style.display = "none";
+    gamemodePopup.style.display === "flex";
   }
+  if (gamemodePopup.style.display === "flex") {
+    gamemodePopup.style.display = "none";
+    gamemode.style.display = "none";
+    normalModeContainer.style.display = "none";
+  } else {
+    gamemodePopup.style.display = "flex";
+  }
+}
+
+function gamemodeSwitcher() {
+  if (gamemodeSwitch === false)
+    playerInputArcade.addEventListener("keyup", function (e) {
+      if (e.keyCode === 13) {
+        inputCheckCampaign();
+      }
+    });
+  else if (gamemodeSwitch === true)
+    playerInput.addEventListener("keyup", function (e) {
+      if (e.keyCode === 13) {
+        inputCheck();
+      }
+    });
 }

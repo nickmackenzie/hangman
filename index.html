@@ -32,23 +32,40 @@
             <p id="lost">You Lost!</p>
           </div>
         </div>
-        <div class="input-container">
-          <button id="playBtn">Play <i class="fas fa-play fa-2x"></i></button>
-          <button id="campBtn">
-            Play Campaign <i class="fas fa-play fa-2x"></i>
-          </button>
-          <div class="guess">
+
+        <div id="gamemode">
+          <button id="normal-mode"><i class="fas fa-user-tie fa-4x"></i>Normal Mode</button>
+          <button id="arcade-mode"><i class="fas fa-gamepad fa-4x"></i>Arcade Mode</button>
+        </div>
+        <div id="normalInput" class="input-container">
+                   <button id="playBtn">Play <i class="fas fa-play fa-2x"></i></button>
+                <div class="guess">
             <input placeholder="Enter a Letter" id="player-guess" type="text" />
             <button id="guess-btn">Guess</button>
           </div>
         </div>
-      </div>
+          <div id="campaign-container">
+                   <button id="campBtn">
+              Play Campaign <i class="fas fa-play fa-2x"></i>
+            </button>
+            <div class="guess">
+              <input placeholder="Enter a Letter" id="arcade-guess" type="text" />
+              <button id="guess-btn">Guess</button>
+            </div>
+        </div>
+      
+    
       <div class="word-wrap">
         <h2 class="title">Don't Fall off the waterfall!</h2>
-        <label for="countdown">Countdown</label>
+        <div class="showGamemode"><button id="modeBtn">Game Mode</button></div>
+        <div id="playerInfo">
+        <label for="playerhealth">Player Health:</label>
         <div id="player-health"></div>
+        <label for="level">Level:</label>
         <div id="player-score"></div>
+        <label for="countdown">Time Left:</label>
         <progress id="countdown" max="100" min="0" value="0">0</progress>
+      </div>
         <div class="mystery-word">
           <h2>Word:</h2>
           <div id="word"></div>
