@@ -1,8 +1,39 @@
+//<!--HTML Selectors-->//
 let river = document.getElementById("river");
+let playBtn = document.getElementById("playBtn");
+let playerInput = document.getElementById("player-guess");
+let guessBtn = document.getElementById("guess-btn");
+let blankWord = document.getElementById("word");
+let waterfall = document.getElementById("waterfall");
+let playerReset = document.getElementById("player");
+let winNotification = document.getElementById("notification-winner");
+let lostNotification = document.getElementById("notification-lost");
+let playerTile = document.createElement("div");
+let player = document.getElementById("player");
+let guessDiv = document.getElementById("guessed");
+let hintBtn = document.getElementById("show-hint");
+let hintBox = document.getElementById("hint");
+
+//<!--HTML Creators-->//
+let blankey = document.createElement("div");
+let scream = new Audio("/sounds/scream.mp3");
 let blank = " _";
-let wordChoosen = "";
-let tileLength = 0;
+
+//<!-- Word/Array variables-->//
+let playerArray = [];
+let correctAnswerArray = [];
+let filledArray = [];
 let wordArray = [];
+let guessedLetters = [];
+let wordChoosen = "";
+
+//<!--Game state-->//
+let playerMover = 0;
+let playerGuess = [];
+let playerLife = wordArray.length;
+let wordChooserBrain;
+
+//<!--Gamedatabase-->//
 let arrayWords = [
   "camping",
   "tent",
@@ -14,34 +45,6 @@ let arrayWords = [
   "canoe",
   "lakes",
 ];
-let playBtn = document.getElementById("playBtn");
-let playerInput = document.getElementById("player-guess");
-let guessBtn = document.getElementById("guess-btn");
-let blankWord = document.getElementById("word");
-let waterfall = document.getElementById("waterfall");
-let playerReset = document.getElementById("player");
-let playerMover = 0;
-let playerGuess = [];
-let playerLife = wordArray.length;
-let playerArray = [];
-let correctAnswerArray = [];
-let filledArray = [];
-let blankey = document.createElement("div");
-let scream = new Audio("/sounds/scream.mp3");
-let playerOptions = {
-  c1: "<img src='img/person.gif'>",
-  c1: "<img src='img/person.gif'>",
-  c1: "<img src='img/person.gif'>",
-  easy: "easy",
-  med: "medium",
-  hard: "hard",
-};
-let playerTile = document.createElement("div");
-let player = document.getElementById("player");
-let guessDiv = document.getElementById("guessed");
-let guessedLetters = [];
-let winNotification = document.getElementById("notification-winner");
-let lostNotification = document.getElementById("notification-lost");
 
 let hint = {
   0: "the activity of spending a vacation living in a camp, tent, or camper.",
@@ -55,30 +58,32 @@ let hint = {
   8: "a large body of water surrounded by land.",
 };
 
-let hintBtn = document.getElementById("show-hint");
-let hintBox = document.getElementById("hint");
+let playerOptions = {
+  c1: "<img src='img/person.gif'>",
+  c1: "<img src='img/person.gif'>",
+  c1: "<img src='img/person.gif'>",
+  easy: "easy",
+  med: "medium",
+  hard: "hard",
+};
 
-let wordChooserBrain;
-
+//<!--Event Listeners-->//
 playBtn.addEventListener("click", playButton);
 guessBtn.addEventListener("click", inputCheck);
 hintBtn.addEventListener("click", showHint);
-
 playerInput.addEventListener("keyup", function (e) {
   if (e.keyCode === 13) {
     inputCheck();
   }
 });
 
-function playerMoverFun() {
-  return (playerMover = playerMover += 45);
-}
+//<!--Game Functions-->//
 
 function playButton() {
   gameReset();
   wordChooser();
   tileMaker();
-  blankMaker();
+  // blankMaker();
   blankey.innerHTML = filledArray.join("");
   word.append(blankey);
   setTimeout(function () {
@@ -108,22 +113,16 @@ function wordChooser() {
 }
 
 function tileMaker() {
-  tileLength = wordChoosen.length;
-  let waterFallTile = wordArray.length - 1;
-  let waterString = waterFallTile.toString();
   wordArray.forEach(function (word, idx) {
     let newTile = document.createElement("div");
     newTile.className = "water";
     newTile.id = idx;
     newTile.innerHTML = "<img src='img/watertile.png'>";
+    filledArray = new Array(playerLife).fill("_ ");
     river.append(newTile);
   });
 }
 
-function blankMaker() {
-  filledArray = new Array(playerLife).fill("_ ");
-  console.log(filledArray);
-}
 function winChecker() {
   var wordString = wordArray.toString();
   var playerString = filledArray.toString();
@@ -140,7 +139,6 @@ function winChecker() {
 
 function inputCheck() {
   let playerGuess = playerInput.value;
-
   guessedLetters.push(playerGuess);
   guessDiv.innerHTML = guessedLetters;
   if (playerArray.includes(playerGuess)) {
@@ -157,15 +155,13 @@ function inputCheck() {
         winChecker();
       }
     });
-
     playerInput.value = "";
   } else {
-    playerMoverFun();
+    //<--This is what move the player when the answer is wrong. I cant adjust this in px-->//
+    playerMover = playerMover += 45;
     player.style.marginLeft = playerMover + "px";
-    console.log("not Correct");
     playerInput.value = "";
     playerLife = playerLife - 1;
-    console.log(playerLife);
     if (playerLife === 0) {
       lostNotification.className = "slide-in-bottom";
       lostNotification.style.display = "block";
