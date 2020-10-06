@@ -189,6 +189,7 @@ function showHint() {
 
 var x = document.getElementById("countdown");
 let playerScore = 0;
+let playerHealth = 10;
 
 let campBtn = document.getElementById("campBtn");
 let score = document.getElementById("player-score");
@@ -281,7 +282,7 @@ function inputCheckCampaign() {
     playerMover = playerMover += 45;
     player.style.marginLeft = playerMover + "px";
     playerInput.value = "";
-    playerLife = playerLife - 1;
+    playerHealth = playerHealth - 1;
     if (playerLife === 0) {
       lostNotification.className = "slide-in-bottom";
       lostNotification.style.display = "block";
@@ -289,7 +290,7 @@ function inputCheckCampaign() {
       setTimeout(function () {
         lostNotification.className = "slide-out-bottom";
       }, 1250);
-      scream.play();
+      // scream.play();
     }
   }
 }
@@ -303,5 +304,12 @@ function showHintCampaign() {
     hintBox.style.display = "none";
   } else {
     hintBox.style.display = "flex";
+  }
+}
+let heart = `<i class="far fa-heart"></i>`;
+let playerBar = document.getElementById("player-health");
+function playerHealthBar() {
+  for (let i = 0; i < 10; i++) {
+    playerBar.innerHTML = heart;
   }
 }
