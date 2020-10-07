@@ -33,7 +33,6 @@ let unlocked = new Audio("/sounds/unlocked.mp3");
 let splash = new Audio("/sounds/splash.wav");
 let music = new Audio("/sounds/nature.mp3");
 let blank = " _";
-let trophyAchieved = false;
 
 //<!-- Word/Array variables-->//
 let playerArray = [];
@@ -44,6 +43,7 @@ let guessedLetters = [];
 let wordChoosen = "";
 let achievementCounter = 0;
 let firsTimeLogin = false;
+let trophyAchieved = false;
 let normalGamesWon = 0;
 let normalGamesLost = 0;
 let hintCounter = 0;
