@@ -24,6 +24,7 @@ let blankey = document.createElement("div");
 let scream = new Audio("/sounds/scream.mp3");
 let unlocked = new Audio("/sounds/unlocked.mp3");
 let blank = " _";
+let trophyAchieved = false;
 
 //<!-- Word/Array variables-->//
 let playerArray = [];
@@ -32,9 +33,10 @@ let filledArray = [];
 let wordArray = [];
 let guessedLetters = [];
 let wordChoosen = "";
-let gamemodeSwitch = true;
 let achievementCounter = 0;
 let firsTimeLogin = false;
+let normalGamesWon = 0;
+let normalGamesLost = 0;
 //<!--Game state-->//
 let playerMover = 0;
 let playerGuess = [];
@@ -74,7 +76,13 @@ let playerOptions = {
   med: "medium",
   hard: "hard",
 };
-
+let trophyList = {
+  trophy1: false,
+  trophy2: false,
+  trophy3: false,
+  trophy4: false,
+  trophy5: false,
+};
 //<!--Event Listeners-->//
 playBtn.addEventListener("click", playButton);
 guessBtn.addEventListener("click", inputCheck);
@@ -138,6 +146,7 @@ function winChecker() {
   var wordString = wordArray.toString();
   var playerString = filledArray.toString();
   if (wordString === playerString) {
+    normalGamesWon = normalGamesWon + 1;
     winNotification.className = "slide-in-bottom";
     winNotification.style.display = "block";
     setTimeout(function () {
@@ -174,6 +183,7 @@ function inputCheck() {
     playerInput.value = "";
     playerLife = playerLife - 1;
     if (playerLife === 0) {
+      normalGamesLost = normalGamesLost + 1;
       lostNotification.className = "slide-in-bottom";
       lostNotification.style.display = "block";
       player.className = "scale-out-right";
@@ -435,6 +445,7 @@ playerInput.addEventListener("keyup", function (e) {
 });
 let trophyBox = document.getElementById("trophyBox");
 let trophyTxt = document.getElementById("trophy-txt");
+
 window.setInterval(function () {
   if (firsTimeLogin === true && achievementCounter === 0) {
     firsTimeLogin = false;
@@ -445,7 +456,28 @@ window.setInterval(function () {
     trophyBox.className = "slide-in-bottom";
     setTimeout(() => {
       trophyBox.className = "slide-out-bottom";
-      // trophyBox.style.display = "none";
+    }, 3000);
+  }
+  if (normalGamesWon === 1 && trophyList.trophy1 === false) {
+    unlocked.play();
+    achievementCounter = achievementCounter + 1;
+    trophyList.trophy1 = true;
+    trophyTxt.innerText = "You Won Your First Game!";
+    trophyBox.style.display = "flex";
+    trophyBox.className = "slide-in-bottom";
+    setTimeout(() => {
+      trophyBox.className = "slide-out-bottom";
+    }, 3000);
+  }
+  if (normalGamesLost === 1 && trophyList.trophy2 === false) {
+    unlocked.play();
+    achievementCounter = achievementCounter + 1;
+    trophyList.trophy2 = true;
+    trophyTxt.innerText = "You lost your first game!";
+    trophyBox.style.display = "flex";
+    trophyBox.className = "slide-in-bottom";
+    setTimeout(() => {
+      trophyBox.className = "slide-out-bottom";
     }, 3000);
   } else {
     return;
