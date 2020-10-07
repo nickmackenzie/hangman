@@ -435,10 +435,10 @@ window.setInterval(function () {
   if (firsTimeLogin === true && achievementCounter === 1) {
     firsTimeLogin = false;
     unlocked.play();
-    acievementMsg.innerText = "First Time Playing!";
-    achievementBox.style.display = "flex";
+    trophytMsg.innerText = "First Time Playing!";
+    trophytBox.style.display = "flex";
     setTimeout(() => {
-      achievementBox.style.display = "none";
+      trophyBox.style.display = "none";
     }, 3000);
   } else {
     return;
