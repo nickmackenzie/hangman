@@ -3,7 +3,6 @@ let river = document.getElementById("river");
 let playBtn = document.getElementById("playBtn");
 let playerInput = document.getElementById("player-guess");
 let playerInputArcade = document.getElementById("arcade-guess");
-
 let blankWord = document.getElementById("word");
 let waterfall = document.getElementById("waterfall");
 let playerReset = document.getElementById("player");
@@ -19,6 +18,14 @@ let arcadeModeBtn = document.getElementById("arcade-mode");
 let arcadeContainer = document.getElementById("campaign-container");
 let modeBtn = document.getElementById("modeBtn");
 let playInfoBox = document.getElementById("playerInfo");
+let gamemodePopup = document.getElementById("gamemode");
+let normalModeContainer = document.getElementById("normalInput");
+//<!--Trophy Selectors-->//
+let tr1 = document.getElementById("tr1");
+let tr2 = document.getElementById("tr2");
+let tr3 = document.getElementById("tr3");
+let tr4 = document.getElementById("tr4");
+let tr5 = document.getElementById("tr5");
 //<!--HTML Creators-->//
 let blankey = document.createElement("div");
 let scream = new Audio("/sounds/scream.mp3");
@@ -38,7 +45,7 @@ let firsTimeLogin = false;
 let normalGamesWon = 0;
 let normalGamesLost = 0;
 let hintCounter = 0;
-
+let arcadeGamesWon = 0;
 //<!--Game state-->//
 let playerMover = 0;
 let playerGuess = [];
@@ -93,8 +100,7 @@ arcadeModeBtn.addEventListener("click", playCampaign);
 modeBtn.addEventListener("click", showPopup);
 
 //<!--Game Functions-->//
-let gamemodePopup = document.getElementById("gamemode");
-let normalModeContainer = document.getElementById("normalInput");
+
 function playButton() {
   playInfoBox.style.display = "none";
   gamemode.style.display = "none";
@@ -290,11 +296,13 @@ function countdownTimer() {
   }
 }
 function gameResetCampaign() {
+  score.innerText = "1";
   x.value = "0";
   player.innerHTML = playerOptions.c1;
   player.style.removeProperty("margin-left");
   player.className = "slide-in-left";
   guessedLetters = [];
+  playerScore = 1;
   playerHealth = 10;
   guessDiv.textContent = "";
   playerMover = 0;
@@ -330,6 +338,7 @@ function winCheckerCampaign() {
     continueCampaign();
     winNotification.className = "slide-in-bottom";
     winNotification.style.display = "block";
+    arcadeGamesWon = arcadeGamesWon + 1;
     playerScore = playerScore + 1;
     score.innerText = playerScore;
     setTimeout(function () {
@@ -397,11 +406,13 @@ function showHintCampaign() {
   hintBox.innerHTML = hint[wordChooserBrain];
   if (hintBox.innerHTML === "undefined") {
     hintBox.innerHTML = "You need to start the game to get a hint!";
+    hintCounter = hintCounter + 1;
   }
   if (hintBox.style.display === "flex") {
     hintBox.style.display = "none";
   } else {
     hintBox.style.display = "flex";
+    hintCounter = hintCounter + 1;
   }
 }
 
@@ -472,6 +483,7 @@ window.setInterval(function () {
     trophyTxt.innerText = "You Won Your First Game!";
     trophyBox.style.display = "flex";
     trophyBox.className = "slide-in-bottom";
+    tr1.style.filter = "none";
     setTimeout(() => {
       trophyBox.className = "slide-out-bottom";
     }, 3000);
@@ -483,6 +495,7 @@ window.setInterval(function () {
     trophyTxt.innerText = "You lost your first game!";
     trophyBox.style.display = "flex";
     trophyBox.className = "slide-in-bottom";
+    tr3.style.filter = "none";
     setTimeout(() => {
       trophyBox.className = "slide-out-bottom";
     }, 3000);
@@ -494,6 +507,7 @@ window.setInterval(function () {
     trophyTxt.innerText = "You won 5 normal games!";
     trophyBox.style.display = "flex";
     trophyBox.className = "slide-in-bottom";
+    tr2.style.filter = "none";
     setTimeout(() => {
       trophyBox.className = "slide-out-bottom";
     }, 3000);
@@ -504,6 +518,36 @@ window.setInterval(function () {
     trophyList.trophy4 = true;
     trophyTxt.innerText = "You need alot of hints...";
     trophyBox.style.display = "flex";
+    trophyBox.className = "slide-in-bottom";
+    setTimeout(() => {
+      trophyBox.className = "slide-out-bottom";
+    }, 3000);
+  }
+  if (arcadeGamesWon >= 5 && trophyList.trophy5 === false) {
+    unlocked.play();
+    achievementCounter = achievementCounter + 1;
+    trophyList.trophy5 = true;
+    trophyTxt.innerText = "You won 5 games of Arcade mode.";
+    trophyBox.style.display = "flex";
+    tr4.style.filter = "none";
+    trophyBox.className = "slide-in-bottom";
+    setTimeout(() => {
+      trophyBox.className = "slide-out-bottom";
+    }, 3000);
+  }
+  if (
+    trophyList.trophy1 === true &&
+    trophyList.trophy2 === true &&
+    trophyList.trophy3 === true &&
+    trophyList.trophy4 === true &&
+    trophyList.trophy5 === false
+  ) {
+    unlocked.play();
+    achievementCounter = achievementCounter + 1;
+    trophyList.trophy5 = false;
+    trophyTxt.innerText = "You got all the trophies!";
+    trophyBox.style.display = "flex";
+    tr5.style.filter = "none";
     trophyBox.className = "slide-in-bottom";
     setTimeout(() => {
       trophyBox.className = "slide-out-bottom";
