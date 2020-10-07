@@ -252,3 +252,13 @@ i {
   align-items: center;
   cursor: pointer;
 }
+#achievement-container {
+  display: none;
+  position: relative;
+  border-radius: 50px;
+  margin-left: 100px;
+  margin-top: 20px;
+  width: 400px;
+  background: rgba(39, 31, 31, 0.315);
+  color: white;
+}

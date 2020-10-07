@@ -350,6 +350,7 @@ function inputCheckCampaign() {
     playerHealthBar();
     if (playerHealth === 0) {
       lostNotification.className = "slide-in-bottom";
+      clearInterval(countDownInterval);
       lostNotification.style.display = "block";
       player.className = "scale-out-right";
       playCampaign();
@@ -429,3 +430,17 @@ playerInputArcade.addEventListener("keyup", function (e) {
 playerInput.addEventListener("keyup", function (e) {
   inputCheck();
 });
+
+window.setInterval(function () {
+  if (firsTimeLogin === true && achievementCounter === 1) {
+    firsTimeLogin = false;
+    unlocked.play();
+    acievementMsg.innerText = "First Time Playing!";
+    achievementBox.style.display = "flex";
+    setTimeout(() => {
+      achievementBox.style.display = "none";
+    }, 3000);
+  } else {
+    return;
+  }
+}, 5000);
