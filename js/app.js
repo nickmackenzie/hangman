@@ -28,8 +28,10 @@ let tr4 = document.getElementById("tr4");
 let tr5 = document.getElementById("tr5");
 //<!--HTML Creators-->//
 let blankey = document.createElement("div");
-let scream = new Audio("/sounds/scream.mp3");
+let scream = new Audio("/sounds/screamfall.mp3");
 let unlocked = new Audio("/sounds/unlocked.mp3");
+let splash = new Audio("/sounds/splash.wav");
+let music = new Audio("/sounds/nature.mp3");
 let blank = " _";
 let trophyAchieved = false;
 
@@ -102,6 +104,8 @@ modeBtn.addEventListener("click", showPopup);
 //<!--Game Functions-->//
 
 function playButton() {
+  music.volume = 0.2;
+  music.play();
   playInfoBox.style.display = "none";
   gamemode.style.display = "none";
   normalModeContainer.style.display = "flex";
@@ -185,6 +189,7 @@ function inputCheck() {
     playerInput.value = "";
   } else {
     //<--This is what move the player when the answer is wrong. I cant adjust this in px-->//
+    splash.play();
     playerMover = playerMover += 45;
     player.style.marginLeft = playerMover + "px";
     playerInput.value = "";
@@ -197,7 +202,7 @@ function inputCheck() {
       setTimeout(function () {
         lostNotification.className = "slide-out-bottom";
       }, 1250);
-      // scream.play();
+      scream.play();
     }
   }
 }
@@ -230,6 +235,8 @@ campBtn.addEventListener("click", playCampaign);
 let countDownInterval;
 
 function playCampaign() {
+  music.volume = 0.2;
+  music.play();
   gameResetCampaign();
   gamemodeSwitch = false;
   playerHealth = 10;
@@ -397,7 +404,7 @@ function inputCheckCampaign() {
         `<i class="fas fa-heart"></i>`,
       ];
       // playCampaign();
-      // scream.play();
+      scream.play();
     }
   }
 }

@@ -7,9 +7,9 @@ body {
 }
 .wrapper {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  position: absolute;
 }
 
 h1,
@@ -27,7 +27,9 @@ h2 {
 }
 .container {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
 }
 .gameboard {
   width: 640px;
@@ -38,7 +40,6 @@ h2 {
   background-position: center;
   background-size: contain;
   border-radius: 15px 30px;
-
   -webkit-box-shadow: -1px 10px 5px -3px rgba(0, 0, 0, 0.53);
   -moz-box-shadow: -1px 10px 5px -3px rgba(0, 0, 0, 0.53);
   box-shadow: -1px 10px 5px -3px rgba(0, 0, 0, 0.53);
@@ -223,23 +224,6 @@ i {
   color: red;
 }
 
-#gamemode {
-  display: flex;
-  justify-content: space-evenly;
-  width: 260px;
-  bottom: 200px;
-  padding: 10px;
-  height: 130px;
-  margin-left: 200px;
-  border-radius: 8px;
-  bottom: 600px;
-
-  background-color: rgba(0, 0, 0, 0.575);
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.12),
-    0 4px 4px rgba(0, 0, 0, 0.12), 0 8px 8px rgba(0, 0, 0, 0.12),
-    0 16px 16px rgba(0, 0, 0, 0.12);
-}
-
 .input-container {
   padding-bottom: 200px;
   margin-bottom: 200px;
@@ -302,10 +286,26 @@ i {
   color: #ffd700;
   padding: 10px;
 }
+
 #tr1,
 #tr2,
 #tr3,
 #tr4,
 #tr5 {
   filter: grayscale(100%);
+}
+#gamemode {
+  display: flex;
+  justify-content: space-evenly;
+  width: 260px;
+  position: absolute;
+  padding: 10px;
+  height: 130px;
+  margin: 100px;
+  margin-left: 200px;
+  border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0.575);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.12),
+    0 4px 4px rgba(0, 0, 0, 0.12), 0 8px 8px rgba(0, 0, 0, 0.12),
+    0 16px 16px rgba(0, 0, 0, 0.12);
 }
