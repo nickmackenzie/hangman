@@ -252,13 +252,21 @@ i {
   align-items: center;
   cursor: pointer;
 }
-#achievement-container {
+#trophyBox {
   display: none;
   position: relative;
+
+  align-items: center;
   border-radius: 50px;
   margin-left: 100px;
   margin-top: 20px;
+  text-align: center;
   width: 400px;
   background: rgba(39, 31, 31, 0.315);
   color: white;
+}
+#trophy-txt {
+  text-align: center;
+  padding: 10px;
+  font-size: 1.7rem;
 }

@@ -22,6 +22,7 @@ let playInfoBox = document.getElementById("playerInfo");
 //<!--HTML Creators-->//
 let blankey = document.createElement("div");
 let scream = new Audio("/sounds/scream.mp3");
+let unlocked = new Audio("/sounds/unlocked.mp3");
 let blank = " _";
 
 //<!-- Word/Array variables-->//
@@ -32,7 +33,8 @@ let wordArray = [];
 let guessedLetters = [];
 let wordChoosen = "";
 let gamemodeSwitch = true;
-
+let achievementCounter = 0;
+let firsTimeLogin = false;
 //<!--Game state-->//
 let playerMover = 0;
 let playerGuess = [];
@@ -88,6 +90,8 @@ function playButton() {
   playInfoBox.style.display = "none";
   gamemode.style.display = "none";
   normalModeContainer.style.display = "flex";
+  firsTimeLogin = true;
+  achievementCounter = achievementCounter + 1;
   gameReset();
   wordChooser();
   tileMaker();
@@ -430,13 +434,14 @@ playerInputArcade.addEventListener("keyup", function (e) {
 playerInput.addEventListener("keyup", function (e) {
   inputCheck();
 });
-
+let trophyBox = document.getElementById("trophyBox");
+let trophyTxt = document.getElementById("trophy-txt");
 window.setInterval(function () {
   if (firsTimeLogin === true && achievementCounter === 1) {
     firsTimeLogin = false;
     unlocked.play();
-    trophytMsg.innerText = "First Time Playing!";
-    trophytBox.style.display = "flex";
+    trophyTxt.innerText = "First Time Playing!";
+    trophyBox.style.display = "flex";
     setTimeout(() => {
       trophyBox.style.display = "none";
     }, 3000);
