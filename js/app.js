@@ -174,6 +174,7 @@ function inputCheck() {
   guessDiv.innerHTML = guessedLetters;
   if (playerArray.includes(playerGuess)) {
     playerInput.value = "";
+
     return alert("you already selected this letter");
   }
   if (wordArray.includes(playerGuess)) {
