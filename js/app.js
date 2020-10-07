@@ -204,7 +204,9 @@ function showHint() {
   if (hintBox.style.display === "flex") {
     hintBox.style.display = "none";
   } else {
+    hintBox.className = "fade-in-bottom";
     hintBox.style.display = "flex";
+
     hintCounter = hintCounter + 1;
     console.log(hintCounter);
   }
@@ -428,11 +430,13 @@ function showPopup() {
   if (gamemodePopup.style.display === "none") {
     arcadeContainer.style.display = "none";
     normalModeContainer.style.display = "none";
+    gamemodePopup.className = "fade-in-fwd";
     gamemodePopup.style.display === "flex";
   }
   if (gamemodePopup.style.display === "flex") {
     gamemodePopup.style.display = "none";
     gamemode.style.display = "none";
+    gamemodePopup.className = "fade-out-bck";
     normalModeContainer.style.display = "none";
   } else {
     gamemodePopup.style.display = "flex";
