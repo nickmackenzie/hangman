@@ -36,29 +36,33 @@
            <div class="trophy-title">Trophy Unlocked:</div>
             <div id="trophy-txt">You Lost!</div>
           </div>
+          <div id="gamemode">
+            <button id="normal-mode"><i class="fas fa-user-tie fa-4x"></i>Normal Mode</button>
+            <button id="arcade-mode"><i class="fas fa-gamepad fa-4x"></i>Arcade Mode</button>
+          </div>
+          <div id="input-wrappers">
+          <div id="normalInput" class="input-container">
+            <button id="playBtn"><i class="fas fa-play fa-2x"></i></button>
+         <div class="guess">
+     <input placeholder="Enter a Letter" id="player-guess" type="text" />
+     <button id="guess-btn">Guess</button>
+   </div>
+ </div>
+   <div id="campaign-container">
+            <button id="campBtn">
+      <i class="fas fa-play fa-2x"></i>
+     </button>
+     <div class="guess">
+       <input placeholder="Enter a Letter" id="arcade-guess" type="text" />
+       <button id="guess-btn">Guess</button>
+     </div>
+ </div>
+</div>
         </div>
 
          
-        <div id="gamemode">
-          <button id="normal-mode"><i class="fas fa-user-tie fa-4x"></i>Normal Mode</button>
-          <button id="arcade-mode"><i class="fas fa-gamepad fa-4x"></i>Arcade Mode</button>
-        </div>
-        <div id="normalInput" class="input-container">
-                   <button id="playBtn">Play <i class="fas fa-play fa-2x"></i></button>
-                <div class="guess">
-            <input placeholder="Enter a Letter" id="player-guess" type="text" />
-            <button id="guess-btn">Guess</button>
-          </div>
-        </div>
-          <div id="campaign-container">
-                   <button id="campBtn">
-              Play Campaign <i class="fas fa-play fa-2x"></i>
-            </button>
-            <div class="guess">
-              <input placeholder="Enter a Letter" id="arcade-guess" type="text" />
-              <button id="guess-btn">Guess</button>
-            </div>
-        </div>
+      
+  
       
     
       <div class="word-wrap">
@@ -89,8 +93,16 @@
           <div id="hint"></div>
         </div>
       </div>
+      
     </div>
-
+  <div class="trophy-holder">
+    <div class="tr1">1</div>
+    <div class="tr2">2</div>
+    <div class="tr3">3</div>
+    <div class="tr4">4</div>
+    <div class="tr5">5</div>
+</div>
+    
     <script src="/js/app.js"></script>
   </body>
 </html>

@@ -237,7 +237,7 @@ function playCampaign() {
   playInfoBox.style.display = "block";
   gamemode.style.display = "none";
   arcadeContainer.style.display = "flex";
-  countDownInterval = setInterval(countdownTimer, 30);
+  countDownInterval = setInterval(countdownTimer, 1200);
   player.className = "slide-in-left";
   wordChooserCampaign();
   tileMakerCampaign();
@@ -479,7 +479,18 @@ window.setInterval(function () {
     setTimeout(() => {
       trophyBox.className = "slide-out-bottom";
     }, 3000);
+  }
+  if (normalGamesWon === 5 && trophyList.trophy3 === false) {
+    unlocked.play();
+    achievementCounter = achievementCounter + 1;
+    trophyList.trophy3 = true;
+    trophyTxt.innerText = "You won 5 normal games!";
+    trophyBox.style.display = "flex";
+    trophyBox.className = "slide-in-bottom";
+    setTimeout(() => {
+      trophyBox.className = "slide-out-bottom";
+    }, 3000);
   } else {
     return;
   }
-}, 6000);
+}, 8000);
