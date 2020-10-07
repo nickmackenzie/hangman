@@ -3,7 +3,7 @@ let river = document.getElementById("river");
 let playBtn = document.getElementById("playBtn");
 let playerInput = document.getElementById("player-guess");
 let playerInputArcade = document.getElementById("arcade-guess");
-let guessBtn = document.getElementById("guess-btn");
+
 let blankWord = document.getElementById("word");
 let waterfall = document.getElementById("waterfall");
 let playerReset = document.getElementById("player");
@@ -37,6 +37,8 @@ let achievementCounter = 0;
 let firsTimeLogin = false;
 let normalGamesWon = 0;
 let normalGamesLost = 0;
+let hintCounter = 0;
+
 //<!--Game state-->//
 let playerMover = 0;
 let playerGuess = [];
@@ -85,7 +87,6 @@ let trophyList = {
 };
 //<!--Event Listeners-->//
 playBtn.addEventListener("click", playButton);
-guessBtn.addEventListener("click", inputCheck);
 hintBtn.addEventListener("click", showHint);
 normalModeBtn.addEventListener("click", playButton);
 arcadeModeBtn.addEventListener("click", playCampaign);
@@ -204,6 +205,8 @@ function showHint() {
     hintBox.style.display = "none";
   } else {
     hintBox.style.display = "flex";
+    hintCounter = hintCounter + 1;
+    console.log(hintCounter);
   }
 }
 
@@ -490,7 +493,18 @@ window.setInterval(function () {
     setTimeout(() => {
       trophyBox.className = "slide-out-bottom";
     }, 3000);
+  }
+  if (hintCounter >= 5 && trophyList.trophy4 === false) {
+    unlocked.play();
+    achievementCounter = achievementCounter + 1;
+    trophyList.trophy4 = true;
+    trophyTxt.innerText = "You need alot of hints...";
+    trophyBox.style.display = "flex";
+    trophyBox.className = "slide-in-bottom";
+    setTimeout(() => {
+      trophyBox.className = "slide-out-bottom";
+    }, 3000);
   } else {
     return;
   }
-}, 8000);
+}, 7000);
