@@ -91,7 +91,6 @@ function playButton() {
   gamemode.style.display = "none";
   normalModeContainer.style.display = "flex";
   firsTimeLogin = true;
-  achievementCounter = achievementCounter + 1;
   gameReset();
   wordChooser();
   tileMaker();
@@ -437,15 +436,18 @@ playerInput.addEventListener("keyup", function (e) {
 let trophyBox = document.getElementById("trophyBox");
 let trophyTxt = document.getElementById("trophy-txt");
 window.setInterval(function () {
-  if (firsTimeLogin === true && achievementCounter === 1) {
+  if (firsTimeLogin === true && achievementCounter === 0) {
     firsTimeLogin = false;
     unlocked.play();
+    achievementCounter = achievementCounter + 1;
     trophyTxt.innerText = "First Time Playing!";
     trophyBox.style.display = "flex";
+    trophyBox.className = "slide-in-bottom";
     setTimeout(() => {
-      trophyBox.style.display = "none";
+      trophyBox.className = "slide-out-bottom";
+      // trophyBox.style.display = "none";
     }, 3000);
   } else {
     return;
   }
-}, 5000);
+}, 6000);
