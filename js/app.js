@@ -88,8 +88,6 @@ function playButton() {
   playInfoBox.style.display = "none";
   gamemode.style.display = "none";
   normalModeContainer.style.display = "flex";
-  gamemodeSwitch = true;
-  // gamemodeSwitcher();
   gameReset();
   wordChooser();
   tileMaker();
@@ -208,16 +206,50 @@ campBtn.addEventListener("click", playCampaign);
 let countDownInterval;
 
 function playCampaign() {
+  gameResetCampaign();
+  gamemodeSwitch = false;
+  playerHealth = 10;
+  heart = [
+    `<i class="fas fa-heart"></i>`,
+    `<i class="fas fa-heart"></i>`,
+    `<i class="fas fa-heart"></i>`,
+    `<i class="fas fa-heart"></i>`,
+    `<i class="fas fa-heart"></i>`,
+    `<i class="fas fa-heart"></i>`,
+    `<i class="fas fa-heart"></i>`,
+    `<i class="fas fa-heart"></i>`,
+    `<i class="fas fa-heart"></i>`,
+    `<i class="fas fa-heart"></i>`,
+  ];
+  playInfoBox.style.display = "block";
+  gamemode.style.display = "none";
+  arcadeContainer.style.display = "flex";
+  countDownInterval = setInterval(countdownTimer, 30);
+  player.className = "slide-in-left";
+  wordChooserCampaign();
+  tileMakerCampaign();
+  playerBar.innerHTML = heart.join("");
+  blankey.innerHTML = filledArray.join("");
+  word.append(blankey);
+  setTimeout(function () {
+    player.className = "";
+  }, 600);
+}
+function continueCampaign() {
+  player.innerHTML = playerOptions.c1;
+  player.style.removeProperty("margin-left");
+  player.className = "slide-in-left";
+  guessedLetters = [];
+  guessDiv.textContent = "";
+  playerMover = 0;
+  hintBox.style.display = "none";
+  playerArray = [];
   gamemodeSwitch = false;
   playInfoBox.style.display = "block";
   gamemode.style.display = "none";
   arcadeContainer.style.display = "flex";
-  countDownInterval = setInterval(countdownTimer, 1000);
-  gameResetCampaign();
-  // gamemodeSwitcher();
   wordChooserCampaign();
   tileMakerCampaign();
-
   playerBar.innerHTML = heart.join("");
   blankey.innerHTML = filledArray.join("");
   word.append(blankey);
@@ -233,11 +265,10 @@ function countdownTimer() {
     lostNotification.className = "slide-in-bottom";
     lostNotification.style.display = "block";
     player.className = "scale-out-right";
-
     playCampaign();
     setTimeout(function () {
       lostNotification.className = "slide-out-bottom";
-    }, 1250);
+    }, 2000);
   }
 }
 function gameResetCampaign() {
@@ -278,7 +309,7 @@ function winCheckerCampaign() {
   var wordString = wordArray.toString();
   var playerString = filledArray.toString();
   if (wordString === playerString) {
-    playCampaign();
+    continueCampaign();
     winNotification.className = "slide-in-bottom";
     winNotification.style.display = "block";
     playerScore = playerScore + 1;
@@ -317,10 +348,11 @@ function inputCheckCampaign() {
     playerInputArcade.value = "";
     playerHealth = playerHealth - 1;
     playerHealthBar();
-    if (playerHealth === 0 || x.value === "0") {
+    if (playerHealth === 0) {
       lostNotification.className = "slide-in-bottom";
       lostNotification.style.display = "block";
       player.className = "scale-out-right";
+      playCampaign();
       setTimeout(function () {
         lostNotification.className = "slide-out-bottom";
       }, 1250);
@@ -336,7 +368,7 @@ function inputCheckCampaign() {
         `<i class="fas fa-heart"></i>`,
         `<i class="fas fa-heart"></i>`,
       ];
-      playCampaign();
+      // playCampaign();
       // scream.play();
     }
   }
@@ -397,16 +429,3 @@ playerInputArcade.addEventListener("keyup", function (e) {
 playerInput.addEventListener("keyup", function (e) {
   inputCheck();
 });
-
-// function gamemodeSwitcher() {
-//   if (gamemodeSwitch === false)
-//
-//       if (e.keyCode === 13) {
-//         inputCheckCampaign();
-//       }
-//     });
-//   else if (gamemodeSwitch === true)
-//
-//       }
-//     });
-// }
