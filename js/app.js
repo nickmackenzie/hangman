@@ -495,22 +495,10 @@ window.setInterval(function () {
       trophyBox.className = "slide-out-bottom";
     }, 3000);
   }
-  if (normalGamesLost === 1 && trophyList.trophy2 === false) {
+  if (normalGamesWon === 5 && trophyList.trophy2 === false) {
     unlocked.play();
     achievementCounter = achievementCounter + 1;
     trophyList.trophy2 = true;
-    trophyTxt.innerText = "You lost your first game!";
-    trophyBox.style.display = "flex";
-    trophyBox.className = "slide-in-bottom";
-    tr3.style.filter = "none";
-    setTimeout(() => {
-      trophyBox.className = "slide-out-bottom";
-    }, 3000);
-  }
-  if (normalGamesWon === 5 && trophyList.trophy3 === false) {
-    unlocked.play();
-    achievementCounter = achievementCounter + 1;
-    trophyList.trophy3 = true;
     trophyTxt.innerText = "You won 5 normal games!";
     trophyBox.style.display = "flex";
     trophyBox.className = "slide-in-bottom";
@@ -519,21 +507,23 @@ window.setInterval(function () {
       trophyBox.className = "slide-out-bottom";
     }, 3000);
   }
-  if (hintCounter >= 5 && trophyList.trophy4 === false) {
+  if (normalGamesLost === 1 && trophyList.trophy3 === false) {
     unlocked.play();
     achievementCounter = achievementCounter + 1;
-    trophyList.trophy4 = true;
-    trophyTxt.innerText = "You need alot of hints...";
+    trophyList.trophy3 = true;
+    trophyTxt.innerText = "You lost your first game!";
     trophyBox.style.display = "flex";
     trophyBox.className = "slide-in-bottom";
+    tr3.style.filter = "none";
     setTimeout(() => {
       trophyBox.className = "slide-out-bottom";
     }, 3000);
   }
-  if (arcadeGamesWon >= 5 && trophyList.trophy5 === false) {
+
+  if (arcadeGamesWon >= 5 && trophyList.trophy4 === false) {
     unlocked.play();
     achievementCounter = achievementCounter + 1;
-    trophyList.trophy5 = true;
+    trophyList.trophy4 = true;
     trophyTxt.innerText = "You won 5 games of Arcade mode.";
     trophyBox.style.display = "flex";
     tr4.style.filter = "none";
@@ -542,24 +532,16 @@ window.setInterval(function () {
       trophyBox.className = "slide-out-bottom";
     }, 3000);
   }
-  if (
-    trophyList.trophy1 === true &&
-    trophyList.trophy2 === true &&
-    trophyList.trophy3 === true &&
-    trophyList.trophy4 === true &&
-    trophyList.trophy5 === false
-  ) {
+  if (hintCounter >= 5 && trophyList.trophy5 === false) {
     unlocked.play();
     achievementCounter = achievementCounter + 1;
-    trophyList.trophy5 = false;
-    trophyTxt.innerText = "You got all the trophies!";
+    trophyList.trophy5 = true;
+    trophyTxt.innerText = "You need alot of hints...";
     trophyBox.style.display = "flex";
     tr5.style.filter = "none";
     trophyBox.className = "slide-in-bottom";
     setTimeout(() => {
       trophyBox.className = "slide-out-bottom";
     }, 3000);
-  } else {
-    return;
   }
 }, 7000);
