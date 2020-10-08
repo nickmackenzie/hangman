@@ -26,6 +26,7 @@ let purpleBtn = document.getElementById("purple");
 let speechBubble = document.querySelector("div.speech-bubble");
 let trophyBox = document.getElementById("trophyBox");
 let trophyTxt = document.getElementById("trophy-txt");
+let dblNotification = document.getElementById("notification-double-letter");
 //<!--Trophy Selectors-->//
 let tr1 = document.getElementById("tr1");
 let tr2 = document.getElementById("tr2");
@@ -185,10 +186,13 @@ function inputCheck() {
   guessDiv.innerHTML = guessedLetters;
   if (playerArray.includes(playerGuess)) {
     playerInput.value = "";
-
-    return alert("you already selected this letter");
+    dblNotification.className = "slide-in-bottom";
+    dblNotification.style.display = "block";
+    setTimeout(function () {
+      dblNotification.className = "slide-out-bottom";
+    }, 1250);
   }
-  if (wordArray.includes(playerGuess)) {
+  if (guessedLetters.includes(playerGuess)) {
     wordArray.forEach(function (letter, position) {
       if (letter === playerGuess) {
         playerArray.splice(position, 0, playerGuess);
@@ -373,8 +377,12 @@ function inputCheckCampaign() {
   guessedLetters.push(playerGuess);
   guessDiv.innerHTML = guessedLetters;
   if (playerArray.includes(playerGuess)) {
-    playerInputArcade.value = "";
-    return alert("you already selected this letter");
+    playerInput.value = "";
+    dblNotification.className = "slide-in-bottom";
+    dblNotification.style.display = "block";
+    setTimeout(function () {
+      dblNotification.className = "slide-out-bottom";
+    }, 1250);
   }
   if (wordArray.includes(playerGuess)) {
     wordArray.forEach(function (letter, position) {
