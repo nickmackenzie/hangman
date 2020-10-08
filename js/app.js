@@ -313,6 +313,7 @@ function countdownTimer() {
   }
 }
 function gameResetCampaign() {
+  speechBubble.innerText = "Need a hint? Click me!";
   score.innerText = "1";
   x.value = "0";
   player.innerHTML = playerOptions.c1;
