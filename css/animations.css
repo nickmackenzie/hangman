@@ -429,7 +429,7 @@
   margin-bottom: 30px;
   padding: 10px;
   position: relative;
-  background: #e8f1f2;
+  background: #ffffff;
   border-radius: 0.4em;
 }
 
@@ -441,7 +441,7 @@
   width: 0;
   height: 0;
   border: 20px solid transparent;
-  border-right-color: #e8f1f2;
+  border-right-color: #ffffff;
   border-left: 0;
   border-bottom: 0;
   margin-top: -10px;

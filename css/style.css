@@ -135,7 +135,7 @@ input:focus {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-evenly;
+  margin: -20px;
 }
 i {
   padding: 5px;

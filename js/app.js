@@ -23,7 +23,7 @@ let normalModeContainer = document.getElementById("normalInput");
 let redBtn = document.getElementById("red");
 let yellowBtn = document.getElementById("yellow");
 let purpleBtn = document.getElementById("purple");
-
+let speechBubble = document.querySelector("div.speech-bubble");
 let trophyBox = document.getElementById("trophyBox");
 let trophyTxt = document.getElementById("trophy-txt");
 //<!--Trophy Selectors-->//
@@ -37,7 +37,7 @@ let blankey = document.createElement("div");
 let scream = new Audio("/sounds/screamfall.mp3");
 let unlocked = new Audio("/sounds/unlocked.mp3");
 let splash = new Audio("/sounds/splash.wav");
-let music = new Audio("/sounds/nature.mp3");
+
 let blank = " _";
 
 //<!-- Word/Array variables-->//
@@ -86,11 +86,10 @@ let hint = {
 };
 
 let playerOptions = {
-  c1: `<script
-  src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script><lottie-player src="https://assets4.lottiefiles.com/packages/lf20_m9qeftnx.json" background="transparent" speed="1" style="width: 100px; height: 100px;transform: rotate(45deg);" loop autoplay></lottie-player>`,
-  c2: `<lottie-player src="https://assets3.lottiefiles.com/packages/lf20_bf90shyr.json"  background="transparent"  speed="1"  style="width: 100; height: 100px;transform: rotate(45deg);"  loop  autoplay></lottie-player>
+  c1: `<lottie-player src="/img/kayak/red.json" background="transparent" speed="1" style="width: 100px; height: 100px;transform: rotate(45deg);" loop autoplay></lottie-player>`,
+  c2: `<lottie-player src="/img/kayak/yellow.json"  background="transparent"  speed="1"  style="width: 100; height: 100px;transform: rotate(45deg);"  loop  autoplay></lottie-player>
   `,
-  c3: `<lottie-player src="https://assets9.lottiefiles.com/packages/lf20_uz8pe6dg.json" background="transparent" speed="1" style="width: 100px; height: 100px; transform: rotate(45deg)" loop autoplay></lottie-player>`,
+  c3: `<lottie-player src="/img/kayak/purple.json" background="transparent" speed="1" style="width: 100px; height: 100px; transform: rotate(45deg)" loop autoplay></lottie-player>`,
 };
 let trophyList = {
   trophy1: false,
@@ -119,8 +118,6 @@ playerInput.addEventListener("keyup", function (e) {
 
 function playButton() {
   clearInterval(countDownInterval);
-  music.volume = 0.2;
-  music.play();
   playInfoBox.style.display = "none";
   gamemode.style.display = "none";
   normalModeContainer.style.display = "flex";
@@ -142,7 +139,7 @@ function gameReset() {
   guessedLetters = [];
   guessDiv.textContent = "";
   playerMover = 0;
-  hintBox.style.display = "none";
+  speechBubble.innerText = "Need a hint? Click me!";
   playerArray = [];
 }
 
@@ -223,18 +220,13 @@ function inputCheck() {
 }
 
 function showHint() {
-  hintBox.innerHTML = hint[wordChooserBrain];
-  if (hintBox.innerHTML === "undefined") {
-    hintBox.innerHTML = "You need to start the game to get a hint!";
+  if (speechBubble.className === "speech-bubble") {
+    speechBubble.innerHTML = hint[wordChooserBrain];
+    speechBubble.className === "speech-bubble active";
   }
-  if (hintBox.style.display === "flex") {
-    hintBox.style.display = "none";
-  } else {
-    hintBox.className = "fade-in-bottom";
-    hintBox.style.display = "flex";
-
-    hintCounter = hintCounter + 1;
-    console.log(hintCounter);
+  if (speechBubble.className === "speech-bubble active") {
+    speechBubble.className === "speech-bubble";
+    speechBubble.innerHTML = "click me for hints!";
   }
 }
 
@@ -250,8 +242,6 @@ campBtn.addEventListener("click", playCampaign);
 let countDownInterval;
 
 function playCampaign() {
-  music.volume = 0.2;
-  music.play();
   gameResetCampaign();
   gamemodeSwitch = false;
   playerHealth = 10;
