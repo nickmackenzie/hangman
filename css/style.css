@@ -5,7 +5,7 @@
   --red-primary: #db5461;
   --trophy-gold: #ffd700;
   --yellow-primary: #ff9b42;
-  --purple-primary: #693668;
+  --purple-primary: #9c27b0;
 }
 html {
   height: 100%;
@@ -100,12 +100,6 @@ input:focus {
   margin: 120px;
 }
 
-.word-wrap {
-  display: flex;
-  justify-content: space-evenly;
-  background-color: #eee;
-}
-
 .water-block {
   margin-top: 130px;
   display: flex;
@@ -123,18 +117,19 @@ input:focus {
 }
 
 .word-wrap {
-  margin: 40px;
-  width: 300px;
-  height: 600px;
-  border-radius: 15px 30px 45px 7.5px;
-  padding: 10px;
-  opacity: 0.7;
-  display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   border-radius: 8px;
   text-align: center;
   align-items: center;
+  margin: 40px;
+  width: 300px;
+  height: 600px;
+  border-radius: 15px;
+  padding: 10px;
+  opacity: 0.7;
+  display: flex;
+  background-color: #eee;
 }
 .mystery-word {
   display: flex;
@@ -152,10 +147,9 @@ i {
   align-items: center;
   justify-content: space-around;
   background-color: var(--green-primary);
-  border-radius: 23px;
   font-size: 1rem;
   border: none;
-  border-radius: 3px;
+  border-radius: 15px;
   cursor: pointer;
   -webkit-box-shadow: -1px 10px 5px -3px rgba(0, 0, 0, 0.53);
   -moz-box-shadow: -1px 10px 5px -3px rgba(0, 0, 0, 0.53);
@@ -225,10 +219,6 @@ i {
   position: absolute;
 }
 
-.guess-letter {
-  margin: 10px;
-}
-
 .fa-heart {
   color: red;
 }
@@ -291,6 +281,10 @@ i {
   padding: 10px;
   cursor: pointer;
 }
+.trophy-holder {
+  display: flex;
+  flex-direction: column;
+}
 .fa-trophy {
   color: var(--trophy-gold);
   padding: 20px;
@@ -301,7 +295,35 @@ i {
 #tr3,
 #tr4,
 #tr5 {
+  cursor: pointer;
   filter: grayscale(100%);
+  transition: ease-in-out 1s;
+}
+
+#tr1 .trophyDesc,
+#tr2 .trophyDesc2,
+#tr3 .trophyDesc3,
+#tr4 .trophyDesc4,
+#tr5 .trophyDesc5 {
+  visibility: hidden;
+  width: 120px;
+  background-color: rgba(0, 0, 0, 0.678);
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 10px 0;
+  margin-left: 20px;
+  /* Position for the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+#tr1:hover .trophyDesc,
+#tr2:hover .trophyDesc2,
+#tr3:hover .trophyDesc3,
+#tr4:hover .trophyDesc4,
+#tr5:hover .trophyDesc5 {
+  visibility: visible;
 }
 #gamemode {
   display: flex;
@@ -329,7 +351,7 @@ i {
 }
 #red:focus {
   background-color: var(--red-primary);
-  color: white;
+  color: black;
   border: 1px solid var(--red-primary);
 }
 #yellow {
@@ -353,6 +375,6 @@ i {
 }
 #purple:focus {
   background-color: var(--purple-primary);
-  color: white;
+  color: black;
   border: 1px solid var(--purple-primary);
 }
