@@ -20,6 +20,12 @@ let modeBtn = document.getElementById("modeBtn");
 let playInfoBox = document.getElementById("playerInfo");
 let gamemodePopup = document.getElementById("gamemode");
 let normalModeContainer = document.getElementById("normalInput");
+let redBtn = document.getElementById("red");
+let yellowBtn = document.getElementById("yellow");
+let purpleBtn = document.getElementById("purple");
+
+let trophyBox = document.getElementById("trophyBox");
+let trophyTxt = document.getElementById("trophy-txt");
 //<!--Trophy Selectors-->//
 let tr1 = document.getElementById("tr1");
 let tr2 = document.getElementById("tr2");
@@ -80,12 +86,11 @@ let hint = {
 };
 
 let playerOptions = {
-  c1: "<img src='img/person.gif'>",
-  c1: "<img src='img/person.gif'>",
-  c1: "<img src='img/person.gif'>",
-  easy: "easy",
-  med: "medium",
-  hard: "hard",
+  c1: `<script
+  src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script><lottie-player src="https://assets4.lottiefiles.com/packages/lf20_m9qeftnx.json" background="transparent" speed="1" style="width: 100px; height: 100px;transform: rotate(45deg);" loop autoplay></lottie-player>`,
+  c2: `<lottie-player src="https://assets3.lottiefiles.com/packages/lf20_bf90shyr.json"  background="transparent"  speed="1"  style="width: 100; height: 100px;transform: rotate(45deg);"  loop  autoplay></lottie-player>
+  `,
+  c3: `<lottie-player src="https://assets9.lottiefiles.com/packages/lf20_uz8pe6dg.json" background="transparent" speed="1" style="width: 100px; height: 100px; transform: rotate(45deg)" loop autoplay></lottie-player>`,
 };
 let trophyList = {
   trophy1: false,
@@ -100,10 +105,20 @@ hintBtn.addEventListener("click", showHint);
 normalModeBtn.addEventListener("click", playButton);
 arcadeModeBtn.addEventListener("click", playCampaign);
 modeBtn.addEventListener("click", showPopup);
+redBtn.addEventListener("click", colorChoice);
+yellowBtn.addEventListener("click", colorChoice);
+purpleBtn.addEventListener("click", colorChoice);
+playerInputArcade.addEventListener("keyup", function (e) {
+  inputCheckCampaign();
+});
+playerInput.addEventListener("keyup", function (e) {
+  inputCheck();
+});
 
 //<!--Game Functions-->//
 
 function playButton() {
+  clearInterval(countDownInterval);
   music.volume = 0.2;
   music.play();
   playInfoBox.style.display = "none";
@@ -113,7 +128,6 @@ function playButton() {
   gameReset();
   wordChooser();
   tileMaker();
-  clearInterval(countDownInterval);
   blankey.innerHTML = filledArray.join("");
   word.append(blankey);
   setTimeout(function () {
@@ -189,7 +203,7 @@ function inputCheck() {
     });
     playerInput.value = "";
   } else {
-    //<--This is what move the player when the answer is wrong. I cant adjust this in px-->//
+    //<--This is what move the player when the answer is wrong. I can adjust this in px-->//
     splash.play();
     playerMover = playerMover += 45;
     player.style.marginLeft = playerMover + "px";
@@ -462,16 +476,6 @@ function showPopup() {
   }
 }
 
-playerInputArcade.addEventListener("keyup", function (e) {
-  inputCheckCampaign();
-});
-
-playerInput.addEventListener("keyup", function (e) {
-  inputCheck();
-});
-let trophyBox = document.getElementById("trophyBox");
-let trophyTxt = document.getElementById("trophy-txt");
-
 window.setInterval(function () {
   if (firsTimeLogin === true && achievementCounter === 0) {
     firsTimeLogin = false;
@@ -546,3 +550,15 @@ window.setInterval(function () {
     }, 3000);
   }
 }, 7000);
+
+function colorChoice(e) {
+  if (e.target.id === "red") {
+    player.innerHTML = playerOptions.c1;
+  }
+  if (e.target.id === "yellow") {
+    player.innerHTML = playerOptions.c2;
+  }
+  if (e.target.id === "purple") {
+    player.innerHTML = playerOptions.c3;
+  }
+}
