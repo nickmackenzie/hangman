@@ -11,6 +11,7 @@ This is my take on hangman. There are two mode. Normal mode is a single round ga
 > **Example:** "Dogs" --- This would would give you 4 chances.
 
 Arcade mode is a bit different as it includes multiple rounds. The number of chances is represented by the heart containers. If you lose all your hearts or if the timer runs out, you lose and start back at level 1.
+
 **Tips:** 
  - You can click the raccoon on the right hand side to get a hint anytime.
  - There are trophies that you can collect in the game. Try hovering over the trophy to see how you can achieve it.
