@@ -1,8 +1,19 @@
+:root {
+  /* Colors */
+  --green-primary: #76cb8f;
+  --winner-green: #7bf659;
+  --red-primary: #db5461;
+  --trophy-gold: #ffd700;
+  --yellow-primary: #ff9b42;
+  --purple-primary: #693668;
+}
 html {
   height: 100%;
+  overflow-y: hidden; /*I was getting weird margin issues with my trophy notification. */
+  overflow-x: hidden; /*This is a quick and in the future I can find out the root cause */
 }
 body {
-  background-color: #76cb8f;
+  background-color: var(--green-primary);
   font-family: "Open Sans", sans-serif;
 }
 .wrapper {
@@ -34,7 +45,6 @@ h2 {
 .gameboard {
   width: 640px;
   height: 640px;
-  background: green;
   background-image: url(/img/bg.png);
   background-repeat: no-repeat;
   background-position: center;
@@ -65,8 +75,7 @@ input:focus {
   font-size: 1rem;
   padding: 10px;
   border: none;
-
-  background-color: #76cb8f;
+  background-color: var(--green-primary);
   margin-left: -5px;
   border-top: 2px solid black;
   border-bottom: 2px solid black;
@@ -85,7 +94,6 @@ input:focus {
 .water {
   height: 50px;
   width: 25px;
-  background-color: blue;
 }
 
 .river {
@@ -143,7 +151,7 @@ i {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  background-color: #76cb8f;
+  background-color: var(--green-primary);
   border-radius: 23px;
   font-size: 1rem;
   border: none;
@@ -172,7 +180,7 @@ i {
 
 #playBtn,
 #campBtn {
-  background: #76cb8f;
+  background: var(--green-primary);
   border-radius: 7px;
   box-shadow: 0 1px #444444;
   border: 2px black solid;
@@ -196,7 +204,7 @@ i {
   display: none;
   font-size: 1.5rem;
   border-radius: 12px;
-  background: #f65959;
+  background: var(--red-primary);
   color: white;
   width: 200px;
   text-align: center;
@@ -209,7 +217,7 @@ i {
   display: none;
   font-size: 1.5rem;
   border-radius: 12px;
-  background: #7bf659;
+  background: var(--winner-green);
   width: 200px;
   text-align: center;
   margin-left: 220px;
@@ -284,7 +292,7 @@ i {
   cursor: pointer;
 }
 .fa-trophy {
-  color: #ffd700;
+  color: var(--trophy-gold);
   padding: 20px;
 }
 
@@ -313,38 +321,38 @@ i {
 
 /*Style for color chooser */
 #red {
-  color: red;
-  border: 1px solid red;
+  color: var(--red-primary);
+  border: 1px solid var(--red-primary);
   padding: 6px;
   border-radius: 4px;
   cursor: pointer;
 }
 #red:focus {
-  background-color: red;
+  background-color: var(--red-primary);
   color: white;
-  border: 1px solid red;
+  border: 1px solid var(--red-primary);
 }
 #yellow {
-  color: #f7b929;
-  border: 1px solid #f7b929;
+  color: var(--yellow-primary);
+  border: 1px solid var(--yellow-primary);
   padding: 6px;
   border-radius: 4px;
   cursor: pointer;
 }
 #yellow:focus {
-  background-color: #f7b929;
+  background-color: var(--yellow-primary);
   color: black;
-  border: 1px solid #f7b929;
+  border: 1px solid var(--yellow-primary);
 }
 #purple {
-  color: #8a6bbb;
-  border: 1px solid #8a6bbb;
+  color: var(--purple-primary);
+  border: 1px solid var(--purple-primary);
   padding: 6px;
   border-radius: 4px;
   cursor: pointer;
 }
 #purple:focus {
-  background-color: #8a6bbb;
-  color: black;
-  border: 1px solid #8a6bbb;
+  background-color: var(--purple-primary);
+  color: white;
+  border: 1px solid var(--purple-primary);
 }
