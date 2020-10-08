@@ -108,10 +108,10 @@ redBtn.addEventListener("click", colorChoice);
 yellowBtn.addEventListener("click", colorChoice);
 purpleBtn.addEventListener("click", colorChoice);
 playerInputArcade.addEventListener("keyup", function (e) {
-  inputCheckCampaign();
+  if (e.keyCode === 13) inputCheckCampaign();
 });
 playerInput.addEventListener("keyup", function (e) {
-  inputCheck();
+  if (e.keyCode === 13) inputCheck();
 });
 
 //<!--Game Functions-->//
