@@ -1,45 +1,54 @@
 //<!--HTML Selectors-->//
-let river = document.getElementById("river");
+
+//<!--Buttons-->//
 let playBtn = document.getElementById("playBtn");
-let playerInput = document.getElementById("player-guess");
-let playerInputArcade = document.getElementById("arcade-guess");
-let blankWord = document.getElementById("word");
-let waterfall = document.getElementById("waterfall");
-let playerReset = document.getElementById("player");
-let winNotification = document.getElementById("notification-winner");
-let lostNotification = document.getElementById("notification-lost");
-let playerTile = document.createElement("div");
-let player = document.getElementById("player");
-let guessDiv = document.getElementById("guessed");
 let hintBtn = document.getElementById("show-hint");
-let hintBox = document.getElementById("hint");
-let normalModeBtn = document.getElementById("normal-mode");
-let arcadeModeBtn = document.getElementById("arcade-mode");
-let arcadeContainer = document.getElementById("campaign-container");
-let modeBtn = document.getElementById("modeBtn");
-let playInfoBox = document.getElementById("playerInfo");
-let gamemodePopup = document.getElementById("gamemode");
-let normalModeContainer = document.getElementById("normalInput");
+let river = document.getElementById("river");
 let redBtn = document.getElementById("red");
 let yellowBtn = document.getElementById("yellow");
 let purpleBtn = document.getElementById("purple");
+let normalModeBtn = document.getElementById("normal-mode");
+let arcadeModeBtn = document.getElementById("arcade-mode");
+let modeBtn = document.getElementById("modeBtn");
+
+//<!-Inputs-->//
+let playerInput = document.getElementById("player-guess");
+let playerInputArcade = document.getElementById("arcade-guess");
+
+//<!--Notifications-->//
+let winNotification = document.getElementById("notification-winner");
+let lostNotification = document.getElementById("notification-lost");
+let dblNotification = document.getElementById("notification-double-letter");
+
+//<!--Containers-->//
 let speechBubble = document.querySelector("div.speech-bubble");
 let trophyBox = document.getElementById("trophyBox");
 let trophyTxt = document.getElementById("trophy-txt");
-let dblNotification = document.getElementById("notification-double-letter");
+let hintBox = document.getElementById("hint");
+let normalModeContainer = document.getElementById("normalInput");
+let arcadeContainer = document.getElementById("campaign-container");
+let playInfoBox = document.getElementById("playerInfo");
+let waterfall = document.getElementById("waterfall");
+let playerReset = document.getElementById("player");
+let gamemodePopup = document.getElementById("gamemode");
+let guessDiv = document.getElementById("guessed");
+let playerTile = document.createElement("div");
+let player = document.getElementById("player");
+let blankWord = document.getElementById("word");
+
+//<!--HTML Creators-->//
+let blankey = document.createElement("div");
+let scream = new Audio("sounds/screamfall.mp3");
+let unlocked = new Audio("sounds/unlocked.mp3");
+let splash = new Audio("sounds/splash.wav");
+let blank = " _";
+
 //<!--Trophy Selectors-->//
 let tr1 = document.getElementById("tr1");
 let tr2 = document.getElementById("tr2");
 let tr3 = document.getElementById("tr3");
 let tr4 = document.getElementById("tr4");
 let tr5 = document.getElementById("tr5");
-//<!--HTML Creators-->//
-let blankey = document.createElement("div");
-let scream = new Audio("sounds/screamfall.mp3");
-let unlocked = new Audio("sounds/unlocked.mp3");
-let splash = new Audio("sounds/splash.wav");
-
-let blank = " _";
 
 //<!-- Word/Array variables-->//
 let playerArray = [];
@@ -48,18 +57,33 @@ let filledArray = [];
 let wordArray = [];
 let guessedLetters = [];
 let wordChoosen = "";
-let achievementCounter = 0;
-let firsTimeLogin = false;
-let trophyAchieved = false;
-let normalGamesWon = 0;
-let normalGamesLost = 0;
-let hintCounter = 0;
-let arcadeGamesWon = 0;
+
 //<!--Game state-->//
 let playerMover = 0;
 let playerGuess = [];
 let playerLife = wordArray.length;
 let wordChooserBrain;
+let trophyAchieved = false;
+let normalGamesWon = 0;
+let normalGamesLost = 0;
+let achievementCounter = 0;
+let hintCounter = 0;
+let arcadeGamesWon = 0;
+let heart = [
+  `<i class="fas fa-heart"></i>`,
+  `<i class="fas fa-heart"></i>`,
+  `<i class="fas fa-heart"></i>`,
+  `<i class="fas fa-heart"></i>`,
+  `<i class="fas fa-heart"></i>`,
+  `<i class="fas fa-heart"></i>`,
+  `<i class="fas fa-heart"></i>`,
+  `<i class="fas fa-heart"></i>`,
+  `<i class="fas fa-heart"></i>`,
+  `<i class="fas fa-heart"></i>`,
+];
+let joinedHeart = heart.join("");
+let playerBar = document.getElementById("player-health");
+playerBar.innerHTML = heart.join("");
 
 //<!--Game database-->//
 let arrayWords = [
@@ -92,6 +116,7 @@ let playerOptions = {
   `,
   c3: `<lottie-player src="img/kayak/purple.json" background="transparent" speed="1" style="width: 100px; height: 100px; transform: rotate(45deg)" loop autoplay></lottie-player>`,
 };
+
 let trophyList = {
   trophy1: false,
   trophy2: false,
@@ -99,6 +124,7 @@ let trophyList = {
   trophy4: false,
   trophy5: false,
 };
+
 //<!--Event Listeners-->//
 playBtn.addEventListener("click", playButton);
 hintBtn.addEventListener("click", showHint);
@@ -116,9 +142,8 @@ playerInput.addEventListener("keyup", function (e) {
 });
 
 //<!--Game Functions-->//
-
 function playButton() {
-  clearInterval(countDownInterval);
+  clearInterval(countDownInterval); //<!--Using this to stop the countdownInterval function that could be running if the user switches from arcade mode.-->//
   playInfoBox.style.display = "none";
   gamemode.style.display = "none";
   normalModeContainer.style.display = "flex";
@@ -238,8 +263,7 @@ function showHint() {
     hintCounter = hintCounter + 1;
   }
 }
-
-//Campaign Area
+//<!--Arcade Mode-->//
 
 var x = document.getElementById("countdown");
 let playerScore = 0;
@@ -280,6 +304,7 @@ function playCampaign() {
     player.className = "";
   }, 600);
 }
+
 function continueCampaign() {
   speechBubble.innerText = "Need a hint? Click me!";
   player.innerHTML = playerOptions.c1;
@@ -428,6 +453,7 @@ function inputCheckCampaign() {
     }
   }
 }
+
 function showHint() {
   if (speechBubble.className === "speech-bubble") {
     speechBubble.innerHTML = hint[wordChooserBrain];
@@ -443,22 +469,6 @@ function showHint() {
     hintCounter = hintCounter + 1;
   }
 }
-
-let heart = [
-  `<i class="fas fa-heart"></i>`,
-  `<i class="fas fa-heart"></i>`,
-  `<i class="fas fa-heart"></i>`,
-  `<i class="fas fa-heart"></i>`,
-  `<i class="fas fa-heart"></i>`,
-  `<i class="fas fa-heart"></i>`,
-  `<i class="fas fa-heart"></i>`,
-  `<i class="fas fa-heart"></i>`,
-  `<i class="fas fa-heart"></i>`,
-  `<i class="fas fa-heart"></i>`,
-];
-let joinedHeart = heart.join("");
-let playerBar = document.getElementById("player-health");
-playerBar.innerHTML = heart.join("");
 
 function playerHealthBar() {
   heart.splice(playerHealth, 1, `<i class="far fa-heart"></i>`);
@@ -530,7 +540,6 @@ window.setInterval(function () {
       trophyBox.className = "slide-out-bottom";
     }, 3000);
   }
-
   if (arcadeGamesWon >= 5 && trophyList.trophy4 === false) {
     unlocked.play();
     achievementCounter = achievementCounter + 1;
