@@ -34,9 +34,9 @@ let tr4 = document.getElementById("tr4");
 let tr5 = document.getElementById("tr5");
 //<!--HTML Creators-->//
 let blankey = document.createElement("div");
-let scream = new Audio("/sounds/screamfall.mp3");
-let unlocked = new Audio("/sounds/unlocked.mp3");
-let splash = new Audio("/sounds/splash.wav");
+let scream = new Audio("sounds/screamfall.mp3");
+let unlocked = new Audio("sounds/unlocked.mp3");
+let splash = new Audio("sounds/splash.wav");
 
 let blank = " _";
 
