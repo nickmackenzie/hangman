@@ -222,11 +222,16 @@ function inputCheck() {
 function showHint() {
   if (speechBubble.className === "speech-bubble") {
     speechBubble.innerHTML = hint[wordChooserBrain];
-    speechBubble.className === "speech-bubble active";
+    speechBubble.className === "active speech-bubble";
+    hintCounter = hintCounter + 1;
   }
-  if (speechBubble.className === "speech-bubble active") {
+  if (speechBubble.className === "active speech-bubble") {
     speechBubble.className === "speech-bubble";
     speechBubble.innerHTML = "click me for hints!";
+  }
+  if (speechBubble.innerHTML === "undefined") {
+    speechBubble.innerHTML = "You have to start a game to get hints!";
+    hintCounter = hintCounter + 1;
   }
 }
 
@@ -413,17 +418,18 @@ function inputCheckCampaign() {
     }
   }
 }
-
-function showHintCampaign() {
-  hintBox.innerHTML = hint[wordChooserBrain];
-  if (hintBox.innerHTML === "undefined") {
-    hintBox.innerHTML = "You need to start the game to get a hint!";
+function showHint() {
+  if (speechBubble.className === "speech-bubble") {
+    speechBubble.innerHTML = hint[wordChooserBrain];
+    speechBubble.className === "active speech-bubble";
     hintCounter = hintCounter + 1;
   }
-  if (hintBox.style.display === "flex") {
-    hintBox.style.display = "none";
-  } else {
-    hintBox.style.display = "flex";
+  if (speechBubble.className === "active speech-bubble") {
+    speechBubble.className === "speech-bubble";
+    speechBubble.innerHTML = "click me for hints!";
+  }
+  if (speechBubble.innerHTML === "undefined") {
+    speechBubble.innerHTML = "You have to start a game to get hints!";
     hintCounter = hintCounter + 1;
   }
 }
