@@ -248,7 +248,7 @@ let countDownInterval;
 
 function playCampaign() {
   gameResetCampaign();
-  gamemodeSwitch = false;
+  speechBubble.innerText = "Need a hint? Click me!";
   playerHealth = 10;
   heart = [
     `<i class="fas fa-heart"></i>`,
@@ -277,6 +277,7 @@ function playCampaign() {
   }, 600);
 }
 function continueCampaign() {
+  speechBubble.innerText = "Need a hint? Click me!";
   player.innerHTML = playerOptions.c1;
   player.style.removeProperty("margin-left");
   player.className = "slide-in-left";
