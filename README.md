@@ -1,6 +1,8 @@
 **Don't Fall Off The Waterfall**
-![enter image description here](https://i.imgur.com/OPT33Jt.png)**How to play:**
+![enter image description here](https://i.imgur.com/OPT33Jt.png)
 **This is defiantly a full screen game. Who uses phones anyways 😊**
+**How to play:**
+
 This is my take on hangman. There are two mode. Normal mode is a single round game mode. It gives you a word, and given the length of the word, thats how many guess you have to solve it. You enter a single letter and press enter to see if the character matches in the word.
 
 
