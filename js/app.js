@@ -112,8 +112,7 @@ let hint = {
 
 let playerOptions = {
   c1: `<lottie-player src="img/kayak/red.json" background="transparent" speed="1" style="width: 100px; height: 100px;transform: rotate(45deg);" loop autoplay></lottie-player>`,
-  c2: `<lottie-player src="img/kayak/yellow.json"  background="transparent"  speed="1"  style="width: 100; height: 100px;transform: rotate(45deg);"  loop  autoplay></lottie-player>
-  `,
+  c2: `<lottie-player src="img/kayak/yellow.json"  background="transparent"  speed="1"  style="width: 100; height: 100px;transform: rotate(45deg);"  loop  autoplay></lottie-player>`,
   c3: `<lottie-player src="img/kayak/purple.json" background="transparent" speed="1" style="width: 100px; height: 100px; transform: rotate(45deg)" loop autoplay></lottie-player>`,
 };
 
