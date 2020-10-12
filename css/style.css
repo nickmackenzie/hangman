@@ -7,11 +7,7 @@
   --yellow-primary: #ff9b42;
   --purple-primary: #9c27b0;
 }
-html {
-  height: 100%;
-  overflow-y: hidden; /*I was getting weird margin issues with my trophy notification. */
-  overflow-x: hidden; /*This is a quick and in the future I can find out the root cause */
-}
+
 body {
   background-color: var(--green-primary);
   font-family: "Open Sans", sans-serif;
