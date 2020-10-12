@@ -192,7 +192,7 @@ function inputCheck() {
       dblNotification.className = "slide-out-bottom";
     }, 1250);
   }
-  if (guessedLetters.includes(playerGuess)) {
+  if  (wordArray.includes(playerGuess)) {
     wordArray.forEach(function (letter, position) {
       if (letter === playerGuess) {
         playerArray.splice(position, 0, playerGuess);
@@ -397,6 +397,7 @@ function inputCheckCampaign() {
     playerInputArcade.value = "";
   } else {
     //<--This is what move the player when the answer is wrong. I cant adjust this in px-->//
+    splash.play();
     playerMover = playerMover += 20;
     player.style.marginLeft = playerMover + "px";
     playerInputArcade.value = "";
