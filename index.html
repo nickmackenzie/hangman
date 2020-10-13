@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="/css/style.css" />
-    <link rel="stylesheet" href="/css/animations.css" />
+    <title>Don't fall off the waterfall</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/animations.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Love+Ya+Like+A+Sister&family=Open+Sans&display=swap"
       rel="stylesheet"
@@ -14,15 +14,40 @@
       src="https://kit.fontawesome.com/4ee0467ea4.js"
       crossorigin="anonymous"
     ></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
   </head>
 
   <body>
     <div class="wrapper">
       <div class="container">
         <div class="gameboard">
+          <div id="input-wrappers">
+            <div id="normalInput" class="input-container">
+              <button id="playBtn"><i class="fas fa-play fa-2x"></i></button>
+           <div class="guess">
+       <input placeholder="Enter a Letter" id="player-guess" type="text"  maxlength="1"/>
+       
+     </div>
+   </div>
+     <div id="campaign-container">
+              <button id="campBtn">
+        <i class="fas fa-play fa-2x"></i>
+       </button>
+       <div class="guess">
+         <input placeholder="Enter a Letter" id="arcade-guess" type="text"  maxlength="10" />
+
+       </div>
+       
+   </div>
+   
+  </div>
+  <div id="gamemode">
+    <button id="normal-mode"><i class="fas fa-user-tie fa-4x"></i>Normal Mode</button>
+    <button id="arcade-mode"><i class="fas fa-gamepad fa-4x"></i>Arcade Mode</button>
+  </div>
           <div class="water-block">
             <div id="river"></div>
-            <img id="waterfall" src="/img/waterfall.png" />
+            <img id="waterfall" src="img/waterfall.png" />
             <div id="player"></div>
           </div>
           <div id="notification-winner">
@@ -31,38 +56,36 @@
           <div id="notification-lost">
             <p id="lost">You Lost!</p>
           </div>
+          <div id="notification-double-letter">
+            <p id="winner">You already guessed this letter!</p>
+          </div>
+          <div id="trophyBox">
+            <div class="circle"><i class="fas fa-trophy fa-4x"></i></i></div>
+           <div class="trophy-title">Trophy Unlocked:</div>
+            <div id="trophy-txt">You Lost!</div>
+          </div>
+    
+          
         </div>
 
-        <div id="gamemode">
-          <button id="normal-mode"><i class="fas fa-user-tie fa-4x"></i>Normal Mode</button>
-          <button id="arcade-mode"><i class="fas fa-gamepad fa-4x"></i>Arcade Mode</button>
-        </div>
-        <div id="normalInput" class="input-container">
-                   <button id="playBtn">Play <i class="fas fa-play fa-2x"></i></button>
-                <div class="guess">
-            <input placeholder="Enter a Letter" id="player-guess" type="text" />
-            <button id="guess-btn">Guess</button>
-          </div>
-        </div>
-          <div id="campaign-container">
-                   <button id="campBtn">
-              Play Campaign <i class="fas fa-play fa-2x"></i>
-            </button>
-            <div class="guess">
-              <input placeholder="Enter a Letter" id="arcade-guess" type="text" />
-              <button id="guess-btn">Guess</button>
-            </div>
-        </div>
-      
-    
+  
       <div class="word-wrap">
         <h2 class="title">Don't Fall off the waterfall!</h2>
-        <div class="showGamemode"><button id="modeBtn">Game Mode</button></div>
+        <div class="showGamemode"><button id="modeBtn">Game Mode</button>
+          <div class="color-wrapper"><label for="kayakcolor">Kayak Color:</label>
+          <div id="colors">      
+
+          <button id="red">Red</button>
+          <button id="yellow">Yellow</button>
+          <button id="purple">Purple</button>
+            </div>
+          </div>
+          </div>
         <div id="playerInfo">
         <label for="playerhealth">Player Health:</label>
         <div id="player-health"></div>
         <label for="level">Level:</label>
-        <div id="player-score"></div>
+        <div id="player-score">1</div>
         <label for="countdown">Time Left:</label>
         <progress id="countdown" max="100" min="0" value="0">0</progress>
       </div>
@@ -76,16 +99,25 @@
         </div>
         <div class="hint-box">
           <button id="show-hint">
-            <img id="racoon" src="/img/hintgiver.png" width="80px" alt="" />
+            <img id="racoon" src="img/hintgiver.png" width="80px" alt="" />
 
             <div class="speech-bubble">Need a hint? Click me!</div>
           </button>
           <div id="hint"></div>
         </div>
+        
       </div>
+      
     </div>
+  <div class="trophy-holder">
+    <div id="tr1"><img src="img/trophy/first.png" alt="">  <span class="trophyDesc">Win A Game In Normal Mode</span></div>
+    <div id="tr2"><img src="img/trophy/winner.png" alt=""><span class="trophyDesc2">Win 5 Games In Normal Mode</span></div>
+    <div id="tr3"><img src="img/trophy/loser.png" alt=""><span class="trophyDesc3">Lose A Game In Normal Mode</span></div>
+    <div id="tr4"><img src="img/trophy/arcade.png" alt=""><span class="trophyDesc4">Get to level 5 in Arcade Mode</span></div>
+    <div id="tr5"><img src="img/trophy/questions.png" alt=""><span class="trophyDesc5">Use the tips one too many times...</span></div>
+</div>
 
-    <script src="/js/app.js"></script>
+    <script src="js/app.js"></script>
   </body>
 </html>
 
