@@ -167,7 +167,7 @@ function gameReset() {
   speechBubble.innerText = "Need a hint? Click me!";
   playerArray = [];
 }
-
+//<!--Chooses a random word in a array of nine. Sets the players life to the length of the word-->//
 function wordChooser() {
   wordChooserBrain = Math.floor(Math.random() * 9);
   waterfall.style.display = "block";
@@ -177,6 +177,7 @@ function wordChooser() {
   wordArray = wordChoosen.split("");
   return wordChoosen;
 }
+//<!--This creates a div a makes the length of the river acording to the length of the word-->//
 
 function tileMaker() {
   wordArray.forEach(function (word, idx) {
@@ -216,7 +217,7 @@ function inputCheck() {
       dblNotification.className = "slide-out-bottom";
     }, 1250);
   }
-  if  (wordArray.includes(playerGuess)) {
+  if (wordArray.includes(playerGuess)) {
     wordArray.forEach(function (letter, position) {
       if (letter === playerGuess) {
         playerArray.splice(position, 0, playerGuess);
@@ -263,7 +264,6 @@ function showHint() {
   }
 }
 //<!--Arcade Mode-->//
-
 var x = document.getElementById("countdown");
 let playerScore = 0;
 let playerHealth = 10;
@@ -272,6 +272,8 @@ let campBtn = document.getElementById("campBtn");
 let score = document.getElementById("player-score");
 campBtn.addEventListener("click", playCampaign);
 let countDownInterval;
+
+//<!--Changed the way arcade mode played so created a seperate play button.-->//
 
 function playCampaign() {
   gameResetCampaign();
@@ -327,6 +329,7 @@ function continueCampaign() {
     player.className = "";
   }, 600);
 }
+
 function countdownTimer() {
   x.value = x.value += 1;
   if (x.value === 100) {
@@ -341,6 +344,7 @@ function countdownTimer() {
     }, 2000);
   }
 }
+
 function gameResetCampaign() {
   speechBubble.innerText = "Need a hint? Click me!";
   score.innerText = "1";
@@ -566,6 +570,7 @@ window.setInterval(function () {
   }
 }, 7000);
 
+//<!--Chooses the color of the kayak-->//
 function colorChoice(e) {
   if (e.target.id === "red") {
     player.innerHTML = playerOptions.c1;

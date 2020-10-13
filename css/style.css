@@ -8,10 +8,12 @@
   --purple-primary: #9c27b0;
 }
 
+/* Main Body Styles */
 body {
   background-color: var(--green-primary);
   font-family: "Open Sans", sans-serif;
 }
+
 .wrapper {
   display: flex;
   flex-wrap: wrap;
@@ -25,6 +27,7 @@ h2 {
   font-family: "Love Ya Like A Sister", cursive;
   letter-spacing: 3px;
 }
+
 .title {
   border-bottom: 2px solid black;
   letter-spacing: 3px;
@@ -32,12 +35,15 @@ h2 {
   padding: 10px;
   font-size: 1.5rem;
 }
+
 .container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
 }
+
+/* Gameboard and input */
 .gameboard {
   width: 640px;
   height: 640px;
@@ -59,10 +65,12 @@ input {
   border: 2px solid black;
   opacity: 0.8;
 }
+
 input:focus {
   outline: none;
   opacity: 1;
 }
+
 #guess-btn:focus {
   outline: none;
 }
@@ -78,15 +86,19 @@ input:focus {
   border-right: 2px solid black;
   cursor: pointer;
 }
+
+/* River Tiles */
 #river {
   display: flex;
   flex-direction: row;
 }
+
 #waterfall {
   margin-top: 100px;
   margin-left: 100px;
   display: none;
 }
+
 .water {
   height: 50px;
   width: 25px;
@@ -100,6 +112,7 @@ input:focus {
   margin-top: 130px;
   display: flex;
 }
+
 #player {
   position: absolute;
   margin-top: 135px;
@@ -112,6 +125,7 @@ input:focus {
   margin: 0;
 }
 
+/* Word Styling/Player Box */
 .word-wrap {
   flex-direction: column;
   justify-content: space-evenly;
@@ -127,15 +141,19 @@ input:focus {
   display: flex;
   background-color: #eee;
 }
+
 .mystery-word {
   display: flex;
   flex-direction: row;
   align-items: center;
   margin: -20px;
 }
+
 i {
   padding: 5px;
 }
+
+/* Hint Box */
 #show-hint {
   padding: 10px;
   margin: 0;
@@ -151,6 +169,7 @@ i {
   -moz-box-shadow: -1px 10px 5px -3px rgba(0, 0, 0, 0.53);
   box-shadow: -1px 10px 5px -3px rgba(0, 0, 0, 0.53);
 }
+
 .hint {
   font-family: "Open Sans", sans-serif;
   font-size: 12px;
@@ -182,14 +201,17 @@ i {
   cursor: pointer;
   border-radius: 8px 16px;
 }
+
 #playBtn:focus {
   outline: none;
   box-shadow: none;
 }
+
 #playBtn:active {
   position: relative;
   top: 1px;
 }
+
 #notification-lost {
   display: none;
   font-size: 1.5rem;
@@ -214,6 +236,7 @@ i {
   margin-top: 100px;
   position: absolute;
 }
+
 #notification-double-letter {
   display: none;
   font-size: 1.5rem;
@@ -226,6 +249,7 @@ i {
   margin-top: 100px;
   position: absolute;
 }
+
 .fa-heart {
   color: red;
 }
@@ -239,6 +263,7 @@ i {
   display: none;
   position: absolute;
 }
+
 #campaign-container {
   padding-bottom: 200px;
   margin-bottom: 200px;
@@ -248,6 +273,7 @@ i {
   display: none;
   position: absolute;
 }
+
 #normal-mode,
 #arcade-mode {
   background-color: transparent;
@@ -265,10 +291,13 @@ i {
   opacity: 0.6;
   margin: 4px;
 }
+
 #normal-mode:hover,
 #arcade-mode:hover {
   opacity: 1;
 }
+
+/* Trophy Styles */
 #trophyBox {
   display: none;
   align-items: center;
@@ -279,19 +308,23 @@ i {
   background: rgba(39, 31, 31, 0.658);
   color: white;
 }
+
 #trophy-txt {
   text-align: center;
   padding: 10px;
   font-size: 1.7rem;
 }
+
 #modeBtn {
   padding: 10px;
   cursor: pointer;
 }
+
 .trophy-holder {
   display: flex;
   flex-direction: column;
 }
+
 .fa-trophy {
   color: var(--trophy-gold);
   padding: 20px;
@@ -332,6 +365,7 @@ i {
 #tr5:hover .trophyDesc5 {
   visibility: visible;
 }
+
 #gamemode {
   display: flex;
   justify-content: space-evenly;
@@ -356,11 +390,13 @@ i {
   border-radius: 4px;
   cursor: pointer;
 }
+
 #red:focus {
   background-color: var(--red-primary);
   color: black;
   border: 1px solid var(--red-primary);
 }
+
 #yellow {
   color: var(--yellow-primary);
   border: 1px solid var(--yellow-primary);
@@ -368,11 +404,13 @@ i {
   border-radius: 4px;
   cursor: pointer;
 }
+
 #yellow:focus {
   background-color: var(--yellow-primary);
   color: black;
   border: 1px solid var(--yellow-primary);
 }
+
 #purple {
   color: var(--purple-primary);
   border: 1px solid var(--purple-primary);
@@ -380,6 +418,7 @@ i {
   border-radius: 4px;
   cursor: pointer;
 }
+
 #purple:focus {
   background-color: var(--purple-primary);
   color: black;
