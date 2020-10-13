@@ -6,6 +6,8 @@
   --trophy-gold: #ffd700;
   --yellow-primary: #ff9b42;
   --purple-primary: #9c27b0;
+  /* Drop Shadows */
+  --default-shadow: -1px 10px 5px -3px rgba(0, 0, 0, 0.53);
 }
 
 /* Main Body Styles */
@@ -52,9 +54,9 @@ h2 {
   background-position: center;
   background-size: contain;
   border-radius: 15px 30px;
-  -webkit-box-shadow: -1px 10px 5px -3px rgba(0, 0, 0, 0.53);
-  -moz-box-shadow: -1px 10px 5px -3px rgba(0, 0, 0, 0.53);
-  box-shadow: -1px 10px 5px -3px rgba(0, 0, 0, 0.53);
+  -webkit-box-shadow: var(--default-shadow);
+  -moz-box-shadow:var(--default-shadow);
+  box-shadow: var(--default-shadow);
 }
 
 input {
@@ -165,9 +167,9 @@ i {
   border: none;
   border-radius: 15px;
   cursor: pointer;
-  -webkit-box-shadow: -1px 10px 5px -3px rgba(0, 0, 0, 0.53);
-  -moz-box-shadow: -1px 10px 5px -3px rgba(0, 0, 0, 0.53);
-  box-shadow: -1px 10px 5px -3px rgba(0, 0, 0, 0.53);
+  -webkit-box-shadow: var(--default-shadow);
+  -moz-box-shadow: var(--default-shadow);
+  box-shadow: var(--default-shadow);
 }
 
 .hint {
@@ -182,9 +184,9 @@ i {
   padding: 2px;
   background-color: rgb(255, 255, 255);
   display: none;
-  -webkit-box-shadow: -1px 10px 5px -3px rgba(0, 0, 0, 0.53);
-  -moz-box-shadow: -1px 10px 5px -3px rgba(0, 0, 0, 0.53);
-  box-shadow: -1px 10px 5px -3px rgba(0, 0, 0, 0.53);
+  -webkit-box-shadow: var(--default-shadow);
+  -moz-box-shadow: var(--default-shadow);
+  box-shadow: var(--default-shadow);
 }
 
 #playBtn,
